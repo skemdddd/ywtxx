@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:background="@drawable/classify_lift_click"
+              android:orientation="vertical"
+              android:clickable="true"
+              android:focusableInTouchMode="true"
+              android:focusable="true"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="15sp"
+        android:layout_gravity="center_vertical"
+        tools:text="hchchch"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="62.5dp"
+        android:id="@+id/classifyLift_tv"/>
+
+    <!--<RadioButton-->
+       <!---->
+        <!--tools:text="123456"-->
+        <!--android:gravity="center"-->
+        <!--android:id="@+id/classifyLift_tv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="62.5dp"-->
+        <!--android:background="@drawable/classify_lift_click"-->
+     <!--/>-->
+
+    <View
+        android:background="@color/halving"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </View>
+</LinearLayout>

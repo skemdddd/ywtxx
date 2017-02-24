@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/loginBackground"
+                android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark">
+        <ImageView
+            android:id="@+id/title_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="18dp"
+            android:background="@mipmap/signin_back"/>
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/title_back"
+            android:layout_centerHorizontal="true"
+            android:text="登录"
+            android:textColor="@color/titleText"
+            android:textSize="18sp"
+        />
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_below="@+id/relativeLayout">
+        <ImageView android:id="@+id/imageView"
+                   android:layout_width="wrap_content"
+                   android:layout_height="161.5dp"
+                   android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                   android:src="@mipmap/sign_in_logo"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner_round" android:orientation="vertical">
+        <EditText android:id="@+id/phoneNumber_edtText"
+                  android:layout_width="match_parent"
+                  android:layout_height="54dp"
+                  android:background="@null"
+                  android:drawableLeft="@mipmap/sign_in_phone"
+                  android:drawablePadding="10dp"
+                  android:hint="请输入手机号"
+                  android:inputType="phone"
+                  android:maxLength="13"
+                  android:paddingLeft="13dp"
+                  android:textSize="14sp"/>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:background="@color/cut_off"/>
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+            <EditText android:id="@+id/verificationCode_edtText"
+                      android:layout_width="match_parent"
+                      android:layout_height="54dp"
+                      android:layout_alignParentLeft="true"
+                      android:layout_alignParentStart="true"
+                      android:layout_alignParentTop="true"
+                      android:layout_toLeftOf="@+id/sendVerification_btn"
+                      android:layout_toStartOf="@+id/sendVerification_btn"
+                      android:background="@null"
+                      android:drawableLeft="@mipmap/sign_in_password"
+                      android:drawablePadding="10dp"
+                      android:hint="请输入验证码"
+                      android:inputType="number"
+                      android:paddingLeft="13dp"
+                      android:textSize="14sp"/>
+            <Button android:id="@+id/sendVerification_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignBaseline="@+id/verificationCode_edtText"
+                    android:layout_alignBottom="@+id/verificationCode_edtText"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="发送验证码"
+                    android:textColor="#333333" android:textSize="12sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/logIn_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="49dp"
+        android:background="@drawable/button_login_round"
+        android:text="登录"
+        android:textColor="@color/titleText"
+        android:textSize="15sp"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_alignParentLeft="true"
+                  android:layout_alignParentStart="true" android:layout_below="@+id/logIn_btn"
+                  android:orientation="vertical">
+        <TextView android:id="@+id/textView"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="3"
+                  android:gravity="center|bottom"
+                  android:text="· 其他方式登陆 ·"
+                  android:textSize="14sp"
+        />
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="18dp"
+                      android:layout_weight="1"
+        >
+            <ImageView android:id="@+id/imageView2"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:src="@mipmap/sign_in_micro_blog"/>
+
+            <ImageView android:id="@+id/imageViesdsw2"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:src="@mipmap/sign_in_qq"
+            />
+            <ImageView android:id="@+id/sdsdsd"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:src="@mipmap/sign_in_wechat"
+            />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

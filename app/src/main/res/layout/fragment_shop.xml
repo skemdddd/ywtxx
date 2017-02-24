@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购物车"
+            android:textColor="@color/titleText"
+            android:textSize="18sp"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+    <ImageView
+        android:background="@mipmap/sdsdds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true" android:layout_centerHorizontal="true"
+        android:id="@+id/imageView6"/>
+    <TextView
+        android:gravity="center"
+        android:textSize="16sp"
+        android:text="购物车是空的，快去选择心爱的商品吧"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/textView2"/>
+    <ImageButton
+        android:background="@color/transparency"
+        android:src="@mipmap/shop_go"
+        android:text="去逛逛"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/imageView6"
+        android:layout_alignStart="@+id/imageView6"
+        android:layout_marginTop="28dp"
+        android:id="@+id/button"/>
+
+
+</RelativeLayout>

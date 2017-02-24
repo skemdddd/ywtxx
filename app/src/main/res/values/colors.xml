@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#CF292E</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="titleText">#FFF</color>
+    <color name="loginBackground">#F0F0F0</color>
+    <color name="cut_off">#eeeeee</color>
+    <color name="white">#FFF</color>
+    <color name="tabText">#838383</color>
+    <color name="transparency">#00000000</color>
+    <color name="moneyText">#d0222a</color>
+    <color name="halving">#eaeaea</color>\
+    <color name="black">#000000</color>
+    <color name="classifylift">#F8F8F8</color>
+<!--图片点击效果-->
+    <color name="clear">#00000000</color>
+    <color name="block">#60000000</color>
+</resources>
