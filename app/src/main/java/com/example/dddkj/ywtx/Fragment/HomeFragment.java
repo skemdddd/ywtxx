@@ -190,7 +190,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                         mPopularityList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                         mPopularityList.setHasFixedSize(true);
                         mPopularityAdapter = new HomePopularityAdapter(R.layout.item_home_popularity, popularityRoot.getData());
-//                        mPopularityAdapter.addHeaderView(LayoutInflater.from(getActivity()).inflate(R.layout.item_home_popularity_title, null));
                         mPopularityList.setAdapter(mPopularityAdapter);
                         mPopularityList.addItemDecoration(new VerticalSpaceItemDecoration(20));
                         Glide.with(getContext())
