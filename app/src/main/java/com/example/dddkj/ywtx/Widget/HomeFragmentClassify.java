@@ -1,6 +1,7 @@
 package com.example.dddkj.ywtx.Widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -8,12 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.dddkj.ywtx.Adapter.HomeClassifyGridViewAdapter;
 import com.example.dddkj.ywtx.Adapter.HomeClassifyViewPagerAdapter;
 import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
 import com.example.dddkj.ywtx.R;
+import com.example.dddkj.ywtx.ui.ClassificAtiondetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,10 @@ public class HomeFragmentClassify {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     int pos = position + curIndex * pageSize;
-                    Toast.makeText(mContext,mDatas.getData().get(pos).getCatsName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext, ClassificAtiondetailsActivity.class);
+                    intent.putExtra("id",mDatas.getData().get(pos).getCatsId());
+                    mContext.startActivity(intent);
+
                 }
             });
         }
