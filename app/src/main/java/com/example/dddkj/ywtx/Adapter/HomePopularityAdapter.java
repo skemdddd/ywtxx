@@ -32,7 +32,7 @@ public class HomePopularityAdapter extends BaseQuickAdapter<HomePopularity,BaseV
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        Bitmap mBitmap = Bitmap.createScaledBitmap(resource, baseViewHolder.getView(R.id.popularity_img).getWidth(), baseViewHolder.getView(R.id.popularity_img).getHeight(), true);
+//                        Bitmap mBitmap = Bitmap.createScaledBitmap(resource, baseViewHolder.getView(R.id.popularity_img).getWidth(), baseViewHolder.getView(R.id.popularity_img).getHeight(), true);
                         baseViewHolder.setImageBitmap(R.id.popularity_img,resource);
 
                     }

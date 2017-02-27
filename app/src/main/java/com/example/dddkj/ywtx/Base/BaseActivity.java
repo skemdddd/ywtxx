@@ -41,6 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 		loadViewLayout();
 	}
 	private void initdata(){
+		Request();
 		setListener();
 
 	}
