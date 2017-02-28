@@ -27,7 +27,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.jakewharton:butterknife:8.5.1'
-
+//    导航
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 //    网络请求
@@ -35,7 +36,7 @@ dependencies {
 //    gson
     compile 'com.google.code.gson:gson:2.8.0'
 //    适配器
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.8.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.8.3'
 //    log
     compile 'com.orhanobut:logger:1.15'
 //    圆形头像
