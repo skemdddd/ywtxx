@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="275dp">
         <ImageView
-            android:scaleType="center"
+            android:scaleType="fitXY"
             android:id="@+id/popularity_img"
             tools:src="@mipmap/sign_in_logo"
             android:layout_width="match_parent"

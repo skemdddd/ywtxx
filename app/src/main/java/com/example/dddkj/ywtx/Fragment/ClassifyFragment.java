@@ -25,6 +25,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +54,10 @@ public class ClassifyFragment extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         return inflater.inflate(R.layout.fragment_classify,container,false);
+
     }
     public void initAdapter(){
+        Logger.i("分类");
         mRigetClassifyList.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         mRigetClassifyList.setHasFixedSize(true);
         classifyRigetAdapter =new ClassifyRigetAdapter(R.layout.item_classify_right,R.layout.item_classify_heard,null);

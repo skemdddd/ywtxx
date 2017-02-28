@@ -8,6 +8,7 @@
               android:layout_marginBottom="15dp"
 >
         <ImageView
+            android:scaleType="fitXY"
             tools:src="@mipmap/home_page_commodity"
             android:id="@+id/recommended_img"
             android:layout_width="138.5dp"

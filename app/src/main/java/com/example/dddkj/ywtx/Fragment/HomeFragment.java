@@ -32,6 +32,7 @@ import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void initListener() {
+        Logger.i("主页");
         mPopularityList.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -143,7 +145,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         HomeClassifyRoot classIfyRoot = gson.fromJson(s, HomeClassifyRoot.class);
-                        HomeFragmentClassify homeFragmentClassify = new HomeFragmentClassify(getContext(), classIfyRoot, getView());
+                        HomeFragmentClassify homeFragmentClassify = new HomeFragmentClassify(getContext(), classIfyRoot, getView(),8);
                         homeFragmentClassify.setClassify();
 
 
@@ -199,7 +201,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                                     @Override
                                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                         mPopularity.setImageBitmap(resource);
-
                                     }
                                 });
 
@@ -224,7 +225,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
         mBGABanner.setAdapter(new HomeBGABannerAdapter(getActivity()));
         mBGABanner.setData(bannerImage, bannerTitle);
-
     }
 
 
@@ -234,7 +234,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      * @param advert
      */
     public void setAd_Image(HomeAdvert advert) {
-
         final List<ImageView> views = new ArrayList<>();
         views.add(mOAd_Image);
         views.add(mTAd_Image);

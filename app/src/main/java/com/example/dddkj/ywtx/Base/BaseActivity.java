@@ -1,5 +1,6 @@
 package com.example.dddkj.ywtx.Base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
@@ -154,6 +156,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 			flag = manager.getActiveNetworkInfo().isAvailable();
 		}
 		return flag;
+	}
+	protected View getRootView(Activity context)
+	{
+		return ((ViewGroup)context.findViewById(android.R.id.content)).getChildAt(0);
+
 	}
 	public String getVersionName()
 	{

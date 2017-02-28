@@ -1,7 +1,6 @@
 package com.example.dddkj.ywtx.Adapter;
 
 import android.graphics.Bitmap;
-import android.view.ViewTreeObserver;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -28,28 +27,24 @@ public class HomeRecommendedAdapter extends BaseQuickAdapter<HomeRecommend,BaseV
     @Override
     protected void convert(final BaseViewHolder baseViewHolder, final HomeRecommend recommend) {
 
-            ViewTreeObserver vto2 = baseViewHolder.getView(R.id.recommended_img).getViewTreeObserver();
-            vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    baseViewHolder.getView(R.id.recommended_img).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+
                     Glide.with(mContext)
                             .load(RequesURL.URL+recommend.getPicurl())
                             .asBitmap()
                             .into(new SimpleTarget<Bitmap>() {
                                 @Override
                                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                                    Bitmap mBitmap = Bitmap.createScaledBitmap(resource, baseViewHolder.getView(R.id.recommended_img).getWidth(), baseViewHolder.getView(R.id.recommended_img).getHeight(), true);
-                                    baseViewHolder.setImageBitmap(R.id.recommended_img,mBitmap);
+                                    baseViewHolder.setImageBitmap(R.id.recommended_img,resource);
                                 }
                             });
                 }
-            });
 
 
 
 
-    }
 
 
 }
+
+
+

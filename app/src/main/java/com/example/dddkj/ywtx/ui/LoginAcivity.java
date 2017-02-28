@@ -13,6 +13,7 @@ import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.utils.NetUtils;
 import com.example.dddkj.ywtx.utils.T;
 import com.example.dddkj.ywtx.utils.TimerCount;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 
@@ -49,6 +50,7 @@ public class LoginAcivity extends BaseActivity  {
 
     @Override
     protected void setListener() {
+        Logger.i("登陆界面");
         mBack.setOnClickListener(this);
         mLogIn.setOnClickListener(this);
         mSendVerification.setOnClickListener(this);

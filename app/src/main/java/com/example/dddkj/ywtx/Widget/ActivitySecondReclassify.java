@@ -1,7 +1,6 @@
 package com.example.dddkj.ywtx.Widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -10,11 +9,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
-import com.example.dddkj.ywtx.Adapter.HomeClassifyGridViewAdapter;
 import com.example.dddkj.ywtx.Adapter.HomeClassifyViewPagerAdapter;
-import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
+import com.example.dddkj.ywtx.Adapter.SecondClassifyGridViewAdapter;
+import com.example.dddkj.ywtx.Entity.SecondaryReclassify;
 import com.example.dddkj.ywtx.R;
-import com.example.dddkj.ywtx.ui.ClassificAtiondetailsActivity;
+import com.example.dddkj.ywtx.utils.T;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -22,15 +21,14 @@ import java.util.List;
 
 /**
  * 项目名称：亿我同行
- * <首页分类>
- * 创建时间：2017/2/15 8:35
+ * <p>
+ * 创建时间：2017/2/28 14:03
  */
 
-public class HomeFragmentClassify {
-
+public class ActivitySecondReclassify {
     private ViewPager mPager;
     private List<View> mPagerList;
-    private HomeClassifyRoot mDatas;
+    private SecondaryReclassify mDatas;
     private LinearLayout mLlDot;
     private LayoutInflater inflater;
     DisplayMetrics dm;
@@ -48,12 +46,12 @@ public class HomeFragmentClassify {
     private int curIndex = 0;
     private Context mContext;
     private View mView;
-    public HomeFragmentClassify(Context mContext, HomeClassifyRoot mDatas, View view,int pageSize){
+    public ActivitySecondReclassify(Context mContext, SecondaryReclassify mDatas, View view,int pageSize){
         this.mContext= mContext;
         this.mDatas = mDatas;
         this.mView =view;
         this.pageSize =pageSize;
-        Logger.i("首页分类");
+        Logger.i("二级分类");
 
     }
     public void setClassify(){
@@ -68,18 +66,13 @@ public class HomeFragmentClassify {
             GridView gridView = (GridView) inflater.inflate(R.layout.fragment_home_classify_gridview, mPager, false);
 
 //            gridView.setAdapter(new HomeClassifyGridViewAdapter(this, mDatas, i, pageSize));
-            gridView.setAdapter(new HomeClassifyGridViewAdapter(mContext,mDatas,i,pageSize));
-
+            gridView.setAdapter(new SecondClassifyGridViewAdapter(mContext,mDatas,i,pageSize));
             mPagerList.add(gridView);
 
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    int pos = position + curIndex * pageSize;
-                    Intent intent = new Intent(mContext, ClassificAtiondetailsActivity.class);
-                    intent.putExtra("id",mDatas.getData().get(pos).getCatsId());
-                    mContext.startActivity(intent);
-
+                    T.showShort(mContext,"点击"+position);
                 }
             });
         }

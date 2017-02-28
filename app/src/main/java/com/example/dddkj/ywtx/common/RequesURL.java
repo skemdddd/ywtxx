@@ -20,4 +20,10 @@ public class RequesURL {
 //    分类页面
     public static final String CLASSIFYHOMENOE=URL+INDEX+"m=Customer&c=GoodsCats&a=typeListNoe";
     public static final String CLASSIFYHOMETWO=URL+INDEX+"m=Customer&c=GoodsCats&a=typeListTwo";
+//   二级分类轮播图 reclassify
+    public static final String RECLASSIFYBANNER=URL+INDEX+"m=Customer&c=Ads&a=typeGoods2";
+//   二级推荐商品 Secondary commodity
+    public static final String SECONDARYCOMMODITY=URL+INDEX+"m=Customer&c=Goods&a=typeGoods2";
+    public static final String RECLASSIFY=URL+INDEX+"m=Customer&c=GoodsCats&a=typeList2";
+
 }

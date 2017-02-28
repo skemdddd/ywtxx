@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -32,75 +30,72 @@
                 android:src="@mipmap/home_page_words"
                 android:layout_alignTop="@+id/image_log" android:layout_centerHorizontal="true"/>
         </RelativeLayout>
-        <com.example.dddkj.ywtx.Widget.MyScrollview
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:scrollbars="none"
-        >
-            <LinearLayout
-                android:descendantFocusability="blocksDescendants"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <cn.bingoogolapple.bgabanner.BGABanner
-                    android:id="@+id/banner_main_zoomFade"
-                    style="@style/BannerDefaultStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="151dp"
-                    app:banner_transitionEffect="defaultEffect"/>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="#FFFFFF">
-
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/viewpager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <LinearLayout
-                        android:id="@+id/ll_dot"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="gone"/>
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="11dp"
-                    android:background="@color/loginBackground"
-                />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/loginBackground"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/title_popularity_img"
-                        android:layout_width="100dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        tools:src="@mipmap/sign_in_logo"/>
-
-                </LinearLayout>
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/popularity_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/loginBackground"
-                >
-                </android.support.v7.widget.RecyclerView>
-
-
-            </LinearLayout>
-
-        </com.example.dddkj.ywtx.Widget.MyScrollview>
-
 
     </LinearLayout>
+    <com.example.dddkj.ywtx.Widget.MyScrollview
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loginBackground"
+        android:scrollbars="none">
+        <LinearLayout
+            android:descendantFocusability="blocksDescendants"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/banner_main_zoomFade"
+                style="@style/BannerDefaultStyle"
+                android:layout_width="match_parent"
+                android:layout_height="151dp"
+                app:banner_transitionEffect="defaultEffect"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="#FFFFFF">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:id="@+id/ll_dot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/loginBackground"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/second_title_popularity_img"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    tools:src="@mipmap/sign_in_logo"/>
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/second_popularity_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/loginBackground"
+            >
+            </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.example.dddkj.ywtx.Widget.MyScrollview>
 </LinearLayout>
