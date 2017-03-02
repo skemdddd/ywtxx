@@ -38,12 +38,6 @@ public class HomeRecommendedAdapter extends BaseQuickAdapter<HomeRecommend,BaseV
                                 }
                             });
                 }
-
-
-
-
-
-
 }
 
 
