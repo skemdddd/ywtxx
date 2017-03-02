@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
+              android:background="@color/loginBackground"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <TextView
-        android:layout_marginTop="10dp"
+
         android:textColor="@color/black"
         android:textSize="14sp"
         android:layout_marginLeft="10dp"
-        android:gravity="center_vertical|bottom"
+        android:gravity="center_vertical"
         tools:text="123456"
         android:id="@+id/heard_text"
         android:layout_width="match_parent"

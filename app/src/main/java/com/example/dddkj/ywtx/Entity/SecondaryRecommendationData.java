@@ -19,40 +19,61 @@ public class SecondaryRecommendationData {
 
     private String orderNum;
 
-    public void setGId(String gId){
+    public String getIsPostage() {
+        return isPostage;
+    }
+
+    public void setIsPostage(String isPostage) {
+        this.isPostage = isPostage;
+    }
+
+    private String isPostage;
+
+    public void setGId(String gId) {
         this.gId = gId;
     }
-    public String getGId(){
+
+    public String getGId() {
         return this.gId;
     }
-    public void setGName(String gName){
+
+    public void setGName(String gName) {
         this.gName = gName;
     }
-    public String getGName(){
+
+    public String getGName() {
         return this.gName;
     }
-    public void setPrice(String price){
+
+    public void setPrice(String price) {
         this.price = price;
     }
-    public String getPrice(){
+
+    public String getPrice() {
         return this.price;
     }
-    public void setWarstock(String warstock){
+
+    public void setWarstock(String warstock) {
         this.warstock = warstock;
     }
-    public String getWarstock(){
+
+    public String getWarstock() {
         return this.warstock;
     }
-    public void setPicurl(String picurl){
+
+    public void setPicurl(String picurl) {
         this.picurl = picurl;
     }
-    public String getPicurl(){
+
+    public String getPicurl() {
         return this.picurl;
     }
-    public void setOrderNum(String orderNum){
+
+    public void setOrderNum(String orderNum) {
         this.orderNum = orderNum;
     }
-    public String getOrderNum(){
+
+    public String getOrderNum() {
         return this.orderNum;
     }
 

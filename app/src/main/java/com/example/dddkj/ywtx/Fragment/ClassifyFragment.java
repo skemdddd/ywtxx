@@ -87,7 +87,7 @@ public class ClassifyFragment extends BaseFragment {
                                 super.onBefore(request);
 
                                 if(classifyRigetAdapter.getData().size()== 0){
-                                    classifyRigetAdapter.setEmptyView(R.layout.itme_classify_right_loading, (ViewGroup) mRigetClassifyList.getParent());
+                                    classifyRigetAdapter.setEmptyView(R.layout.progress_loading_view, (ViewGroup) mRigetClassifyList.getParent());
 
                                 }
                             }

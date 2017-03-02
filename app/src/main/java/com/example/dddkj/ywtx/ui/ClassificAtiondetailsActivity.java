@@ -17,15 +17,19 @@ import com.example.dddkj.ywtx.Base.BaseActivity;
 import com.example.dddkj.ywtx.Entity.SecondaryBGABanner;
 import com.example.dddkj.ywtx.Entity.SecondaryReclassify;
 import com.example.dddkj.ywtx.Entity.SecondaryRecommendation;
+import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.ActivitySecondReclassify;
 import com.example.dddkj.ywtx.Widget.NullStringToEmptyAdapterFactory;
+import com.example.dddkj.ywtx.Widget.Titlebar;
 import com.example.dddkj.ywtx.common.RequesURL;
+import com.example.dddkj.ywtx.utils.ProgressActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.request.BaseRequest;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -45,44 +49,71 @@ import static com.lzy.okgo.OkGo.getContext;
  */
 
 public class ClassificAtiondetailsActivity extends BaseActivity {
-//    轮播
+    //    轮播
     @BindView(R.id.banner_main_zoomFade)
     BGABanner mBGABanner;
     @BindView(R.id.second_title_popularity_img)
     ImageView mImageView;
-//    热门
+    @BindView(R.id.titlebar)
+    Titlebar mToolbar;
+    @BindView(R.id.progress)
+    ProgressActivity mProgressActivity;
+
+    String titleText;
+    Intent mIntent;
+
+    //    热门
     @BindView(R.id.second_popularity_recycler)
     RecyclerView mPopularityList;
     ClassificAtiondetailsAdapter mClassificAtiondetailsAdapter;
+
     @Override
     protected void loadViewLayout() {
         Logger.i("首页分类详情1");
         setContentView(R.layout.activity_reclassify);
+        mIntent = getIntent();
+        titleText = mIntent.getStringExtra("title");
+
 
     }
 
     @Override
     protected void setListener() {
+        mToolbar.setOnButtonClickListener(new Titlebar.OnButtonClickListener() {
+            @Override
+            public void Onback() {
+                MyApplication.getInstance().finishActivity(ClassificAtiondetailsActivity.this);
+            }
+        });
 
     }
+
 
     @Override
     protected void Request() {
         final Gson gson = new GsonBuilder().registerTypeAdapterFactory(new NullStringToEmptyAdapterFactory<>()).create();
-        Intent intent = getIntent();
 //        热门
         OkGo.post(RequesURL.SECONDARYCOMMODITY)
                 .tag(this)
-                .params("catsid",intent.getStringExtra("id"))
+                .params("catsid", mIntent.getStringExtra("id"))
                 .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(String s, Call call, Response response) {
-                        SecondaryRecommendation secondaryRecommendation =gson.fromJson(s,SecondaryRecommendation.class);
+                    public void onBefore(BaseRequest request) {
+                        super.onBefore(request);
+                        mToolbar.setText(titleText);
+                        mProgressActivity.showLoading();
+
+                    }
+
+                    @Override
+                    public void onAfter(String s, Exception e) {
+                        super.onAfter(s, e);
+                        mProgressActivity.showContent();
+                        SecondaryRecommendation secondaryRecommendation = gson.fromJson(s, SecondaryRecommendation.class);
                         mPopularityList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                         mPopularityList.setHasFixedSize(true);
-                        mClassificAtiondetailsAdapter = new ClassificAtiondetailsAdapter(R.layout.item_classification_deails,secondaryRecommendation.getData());
+                        mClassificAtiondetailsAdapter = new ClassificAtiondetailsAdapter(R.layout.item_classification_deails, secondaryRecommendation.getData());
                         mPopularityList.setAdapter(mClassificAtiondetailsAdapter);
-
                         Glide.with(getBaseContext())
                                 .load(RequesURL.URL + secondaryRecommendation.getMessage())
                                 .asBitmap()
@@ -90,10 +121,21 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                                     @Override
                                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                         mImageView.setImageBitmap(resource);
-
                                     }
                                 });
+                        if (mClassificAtiondetailsAdapter.getData().size() == 0) {
+                            mProgressActivity.showEmpty(getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容，先去逛逛别的吧", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    MyApplication.getInstance().finishActivity(ClassificAtiondetailsActivity.this);
+                                }
+                            });
+                        }
 
+                    }
+
+                    @Override
+                    public void onSuccess(String s, Call call, Response response) {
 
                     }
                 });
@@ -105,7 +147,7 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        SecondaryBGABanner secondaryBGABanner =gson.fromJson(s,SecondaryBGABanner.class);
+                        SecondaryBGABanner secondaryBGABanner = gson.fromJson(s, SecondaryBGABanner.class);
                         setBGABanner(secondaryBGABanner);
 
                     }
@@ -113,15 +155,18 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
 //        分类
         OkGo.post(RequesURL.RECLASSIFY)
                 .tag(this)
-                .params("typeid",intent.getStringExtra("id"))
+                .params("typeid", mIntent.getStringExtra("id"))
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        SecondaryReclassify secondaryReclassify = gson.fromJson(s,SecondaryReclassify.class);
-                        ActivitySecondReclassify activitySecondReclassify = new ActivitySecondReclassify(getContext(), secondaryReclassify,getRootView(ClassificAtiondetailsActivity.this),4);
+                        SecondaryReclassify secondaryReclassify = gson.fromJson(s, SecondaryReclassify.class);
+                        ActivitySecondReclassify activitySecondReclassify = new ActivitySecondReclassify(getContext(), secondaryReclassify, getRootView(ClassificAtiondetailsActivity.this), 4);
                         activitySecondReclassify.setClassify();
+
                     }
                 });
+
+
     }
 
     @Override
@@ -135,8 +180,8 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
     }
 
     /**
-     *
      * 轮播图
+     *
      * @param secondaryBGABanner
      */
     public void setBGABanner(SecondaryBGABanner secondaryBGABanner) {

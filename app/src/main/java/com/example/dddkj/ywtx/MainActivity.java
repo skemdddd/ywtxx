@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @BindView(R.id.hometab_radio)
     RadioGroup mHomeTab;
-    private FragmentController controller;
+    public FragmentController controller;
 
     @Override
     protected void loadViewLayout() {

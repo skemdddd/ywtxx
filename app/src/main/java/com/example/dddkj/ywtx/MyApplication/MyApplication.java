@@ -22,7 +22,7 @@ public class MyApplication extends Application {
         super.onCreate();
         Okgo();
         instance = this;
-     
+
     }
     /**
      * 应用实例

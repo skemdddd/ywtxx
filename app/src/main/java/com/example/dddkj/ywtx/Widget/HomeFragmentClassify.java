@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.example.dddkj.ywtx.Adapter.HomeClassifyGridViewAdapter;
 import com.example.dddkj.ywtx.Adapter.HomeClassifyViewPagerAdapter;
 import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
+import com.example.dddkj.ywtx.MainActivity;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.ui.ClassificAtiondetailsActivity;
 import com.orhanobut.logger.Logger;
@@ -48,11 +49,13 @@ public class HomeFragmentClassify {
     private int curIndex = 0;
     private Context mContext;
     private View mView;
-    public HomeFragmentClassify(Context mContext, HomeClassifyRoot mDatas, View view,int pageSize){
+    MainActivity mMainActivity;
+    public HomeFragmentClassify(Context mContext, HomeClassifyRoot mDatas, View view,int pageSize,MainActivity mainActivity){
         this.mContext= mContext;
         this.mDatas = mDatas;
         this.mView =view;
         this.pageSize =pageSize;
+        this.mMainActivity =mainActivity;
         Logger.i("首页分类");
 
     }
@@ -76,9 +79,15 @@ public class HomeFragmentClassify {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     int pos = position + curIndex * pageSize;
-                    Intent intent = new Intent(mContext, ClassificAtiondetailsActivity.class);
-                    intent.putExtra("id",mDatas.getData().get(pos).getCatsId());
-                    mContext.startActivity(intent);
+                    if(pos != mDatas.getData().size()-1) {
+                        Intent intent = new Intent(mContext, ClassificAtiondetailsActivity.class);
+                        intent.putExtra("id", mDatas.getData().get(pos).getCatsId());
+                        intent.putExtra("title", mDatas.getData().get(pos).getCatsName());
+                        mContext.startActivity(intent);
+                    }else{
+                        mMainActivity.controller.showFragment(1);
+                        mMainActivity.findViewById(R.id.classifyTab_rdoBtn).performClick();
+                    }
 
                 }
             });

@@ -76,13 +76,13 @@ public class ActivitySecondReclassify {
                 }
             });
         }
-        //设置适配器
+//        设置适配器
         mPager.setAdapter(new HomeClassifyViewPagerAdapter(mPagerList));
         //设置圆点
-        if(pageCount>=2){
-            setOvalLayout();
-            mLlDot.setVisibility(View.VISIBLE);
-        }
+//        if(pageCount>=2){
+//            setOvalLayout();
+//            mLlDot.setVisibility(View.VISIBLE);
+//        }
 
 
 

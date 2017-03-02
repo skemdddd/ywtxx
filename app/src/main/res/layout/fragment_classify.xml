@@ -10,16 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark">
         <ImageView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/title_back"
-            android:layout_centerHorizontal="true"
-            android:src="@mipmap/home_page_words"
-
-        />
-        <ImageView
-            android:id="@+id/title_back"
+            android:id="@+id/image_log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -28,6 +19,13 @@
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
             android:background="@mipmap/personal_message"/>
+        <ImageView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/home_page_words"
+
+            android:layout_alignTop="@+id/image_log" android:layout_centerHorizontal="true"/>
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:background="@color/white"

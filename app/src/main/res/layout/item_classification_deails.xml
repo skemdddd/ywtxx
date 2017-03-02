@@ -20,7 +20,7 @@
             android:layout_height="160dp"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:src="@mipmap/personal_coupon"/>
+            tools:src="@mipmap/personal_coupon"/>
         <TextView
             android:id="@+id/titleNameText"
             android:layout_width="match_parent"
@@ -43,31 +43,35 @@
             android:layout_gravity="center"
             android:textColor="@color/moneyText"
             android:textSize="15sp" tools:text="我的优惠券"
-            android:layout_below="@+id/titleNameText" android:layout_toRightOf="@+id/picture_img"
-            android:layout_toEndOf="@+id/picture_img" android:layout_marginLeft="7dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="65dp"/>
+            android:layout_toRightOf="@+id/picture_img"
+            android:layout_toEndOf="@+id/picture_img"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="85dp"/>
         <TextView
             android:id="@+id/freight_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="15sp" tools:text="我的优惠券"
-            android:layout_below="@+id/titleNameText" android:layout_toRightOf="@+id/picture_img"
-            android:layout_toEndOf="@+id/picture_img" android:layout_marginLeft="7dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="95dp"/>
+            android:layout_toRightOf="@+id/picture_img"
+            android:layout_toEndOf="@+id/picture_img"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="123dp"/>
 
         <TextView
             android:id="@+id/numberPeople_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="15sp" tools:text="我的优惠券"
-            android:layout_below="@+id/titleNameText" android:layout_toRightOf="@+id/picture_img"
-            android:layout_toEndOf="@+id/picture_img" android:layout_marginLeft="7dp"
+            android:textSize="15sp"
+            tools:text="我的优惠券"
+            android:layout_toRightOf="@+id/picture_img"
+            android:layout_toEndOf="@+id/picture_img"
+            android:layout_marginLeft="7dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="95dp"/>
+            android:layout_marginTop="123dp"/>
 
     </RelativeLayout>
 

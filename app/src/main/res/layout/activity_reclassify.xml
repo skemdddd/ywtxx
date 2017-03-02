@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <LinearLayout
+    <com.example.dddkj.ywtx.Widget.Titlebar
+        android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimaryDark">
-            <ImageView
-                android:id="@+id/image_log"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@mipmap/personal_message"/>
-            <ImageView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/home_page_words"
-                android:layout_alignTop="@+id/image_log" android:layout_centerHorizontal="true"/>
-        </RelativeLayout>
+        android:layout_height="wrap_content">
 
-    </LinearLayout>
+    </com.example.dddkj.ywtx.Widget.Titlebar>
+
+    <com.example.dddkj.ywtx.utils.ProgressActivity
+    android:id="@+id/progress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <com.example.dddkj.ywtx.Widget.MyScrollview
+        android:id="@+id/qwe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/loginBackground"
@@ -50,22 +35,15 @@
                 app:banner_transitionEffect="defaultEffect"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="78dp"
                 android:background="#FFFFFF">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:id="@+id/ll_dot"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="gone"/>
+
+
             </RelativeLayout>
 
             <LinearLayout
@@ -86,16 +64,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:descendantFocusability="blocksDescendants">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/second_popularity_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/loginBackground"
-            >
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/second_popularity_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/loginBackground"
+                >
+                </android.support.v7.widget.RecyclerView>
             </RelativeLayout>
 
         </LinearLayout>
 
     </com.example.dddkj.ywtx.Widget.MyScrollview>
+
+
+</com.example.dddkj.ywtx.utils.ProgressActivity>
 </LinearLayout>

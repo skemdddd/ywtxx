@@ -22,6 +22,7 @@ import com.example.dddkj.ywtx.Entity.HomeAdvert;
 import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
 import com.example.dddkj.ywtx.Entity.HomePopularityRoot;
 import com.example.dddkj.ywtx.Entity.HomeRecommendRoot;
+import com.example.dddkj.ywtx.MainActivity;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.HomeFragmentClassify;
 import com.example.dddkj.ywtx.common.RequesURL;
@@ -119,6 +120,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initData() {
         Submit();
+
     }
 
     public void Submit() {
@@ -145,7 +147,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         HomeClassifyRoot classIfyRoot = gson.fromJson(s, HomeClassifyRoot.class);
-                        HomeFragmentClassify homeFragmentClassify = new HomeFragmentClassify(getContext(), classIfyRoot, getView(),8);
+                        HomeFragmentClassify homeFragmentClassify = new HomeFragmentClassify(getContext(), classIfyRoot, getView(),8, (MainActivity) getActivity());
                         homeFragmentClassify.setClassify();
 
 
@@ -247,8 +249,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            Bitmap mBitmap = Bitmap.createScaledBitmap(resource, acc.getWidth(), acc.getHeight(), true);
-                            acc.setImageBitmap(mBitmap);
+                            acc.setImageBitmap(resource);
                         }
 
                     });

@@ -27,8 +27,10 @@ public class ClassificAtiondetailsAdapter extends BaseQuickAdapter<SecondaryReco
     @Override
     protected void convert(final BaseViewHolder helper, SecondaryRecommendationData item) {
         helper.setText(R.id.titleNameText,item.getGName());
-
         helper.setText(R.id.money_text,"￥"+item.getPrice());
+        helper.setText(R.id.numberPeople_text,item.getOrderNum()+"人付款");
+        helper.setText(R.id.freight_text,item.getIsPostage());
+
 
         Glide.with(mContext)
                 .load(RequesURL.URL+item.getPicurl())
