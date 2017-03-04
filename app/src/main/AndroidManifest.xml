@@ -2,6 +2,8 @@
           package="com.example.dddkj.ywtx">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
 
     <application
         android:name=".MyApplication.MyApplication"
@@ -17,6 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.LoginAcivity">
+
+        </activity>
+        <activity android:name=".ui.ClassificAtiondetailsActivity">
+
+        </activity>
+        <activity android:name=".ui.TertiaryDetailsActivity">
 
         </activity>
 
