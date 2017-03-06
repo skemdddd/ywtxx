@@ -54,6 +54,15 @@ public class ClassifyFragment extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         return inflater.inflate(R.layout.fragment_classify,container,false);
+//        if(NetUtils.isConnected(this)!=true) {
+//            mProgressActivity.showError(getResources().getDrawable(R.mipmap.ic_error_page), getResources().getString(R.string.progressActivityErrorTitlePlaceholder),
+//                    getResources().getString(R.string.progressActivityErrorContentPlaceholder), "点击重试", new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            return;
+//                        }
+//                    });
+//        }
 
     }
     public void initAdapter(){
@@ -118,11 +127,6 @@ public class ClassifyFragment extends BaseFragment {
                         final Gson gson = new GsonBuilder().registerTypeAdapterFactory(new NullStringToEmptyAdapterFactory<>()).create();
                         ClassifySkip classifySkip =gson.fromJson(s,ClassifySkip.class);
                         classifyRigetAdapter.setNewData(getSampleData(classifySkip));
-                    }
-                    @Override
-                    public void onBefore(BaseRequest request) {
-                        super.onBefore(request);
-                        classifyRigetAdapter.setEmptyView(R.layout.itme_classify_right_loading, (ViewGroup) mRigetClassifyList.getParent());
                     }
 
 

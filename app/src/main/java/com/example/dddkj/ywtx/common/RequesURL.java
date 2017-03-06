@@ -25,5 +25,7 @@ public class RequesURL {
 //   二级推荐商品 Secondary commodity
     public static final String SECONDARYCOMMODITY=URL+INDEX+"m=Customer&c=Goods&a=typeGoods2";
     public static final String RECLASSIFY=URL+INDEX+"m=Customer&c=GoodsCats&a=typeList2";
+// 分类下商品
+    public static final String CLASSIFICATIONGOODS=URL+INDEX+"m=Customer&c=Goods&a=goodsList";
 
 }

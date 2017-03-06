@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         setContentView(R.layout.activity_main);
         controller = FragmentController.getInstance(this, R.id.hometab_context);
         controller.showFragment(0);
+
     }
 
     @Override

@@ -84,6 +84,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
+
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 

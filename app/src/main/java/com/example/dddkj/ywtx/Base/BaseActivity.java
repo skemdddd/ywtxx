@@ -37,7 +37,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 			window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 			window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 		}
-
 		mContext = getActivityContext();
 		initView();
 		ButterKnife.bind(this);

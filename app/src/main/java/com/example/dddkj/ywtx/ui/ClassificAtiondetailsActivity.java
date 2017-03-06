@@ -40,8 +40,6 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 import okhttp3.Call;
 import okhttp3.Response;
 
-import static com.lzy.okgo.OkGo.getContext;
-
 /**
  * 项目名称：亿我同行
  * <首页分类详情1>
@@ -58,7 +56,6 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
     Titlebar mToolbar;
     @BindView(R.id.progress)
     ProgressActivity mProgressActivity;
-
     String titleText;
     Intent mIntent;
 
@@ -108,6 +105,7 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                     @Override
                     public void onAfter(String s, Exception e) {
                         super.onAfter(s, e);
+
                         mProgressActivity.showContent();
                         SecondaryRecommendation secondaryRecommendation = gson.fromJson(s, SecondaryRecommendation.class);
                         mPopularityList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
@@ -160,7 +158,7 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         SecondaryReclassify secondaryReclassify = gson.fromJson(s, SecondaryReclassify.class);
-                        ActivitySecondReclassify activitySecondReclassify = new ActivitySecondReclassify(getContext(), secondaryReclassify, getRootView(ClassificAtiondetailsActivity.this), 4);
+                        ActivitySecondReclassify activitySecondReclassify = new ActivitySecondReclassify(ClassificAtiondetailsActivity.this, secondaryReclassify, getRootView(ClassificAtiondetailsActivity.this), 4);
                         activitySecondReclassify.setClassify();
 
                     }

@@ -1,6 +1,7 @@
 package com.example.dddkj.ywtx.Widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import com.example.dddkj.ywtx.Adapter.HomeClassifyViewPagerAdapter;
 import com.example.dddkj.ywtx.Adapter.SecondClassifyGridViewAdapter;
 import com.example.dddkj.ywtx.Entity.SecondaryReclassify;
 import com.example.dddkj.ywtx.R;
-import com.example.dddkj.ywtx.utils.T;
+import com.example.dddkj.ywtx.ui.TertiaryDetailsActivity;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
@@ -72,7 +73,9 @@ public class ActivitySecondReclassify {
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    T.showShort(mContext,"点击"+position);
+                    Intent intent = new Intent(mContext, TertiaryDetailsActivity.class);
+                    intent.putExtra("id",mDatas.getData().get(position).getCatsId());
+                    mContext.startActivity(intent);
                 }
             });
         }

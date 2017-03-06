@@ -24,12 +24,23 @@
             android:layout_marginLeft="20dp"
             android:id="@+id/moneyText"
             android:textColor="@color/moneyText"
-            tools:text="实打实大苏打实打实大苏打和是的旧时的就是"
-            android:layout_width="match_parent"
+            tools:text="456123456789"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
+        <TextView
+            android:textSize="10sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/numberpeoText"
+            tools:text="50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/moneyText"
+            android:layout_toEndOf="@+id/moneyText"/>
         <TextView
             android:layout_marginTop="8dp"
             android:layout_marginLeft="20dp"
