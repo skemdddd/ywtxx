@@ -75,6 +75,22 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
     protected void setListener() {
         initView();
         mMyScrollview.setOnScrollListener(this);
+        mTitlebar.setOnTitleBarClickListener(new Titlebar.TitleBarClickListener() {
+            @Override
+            public void onim() {
+
+            }
+
+            @Override
+            public void Onseek() {
+
+            }
+
+            @Override
+            public void Onback() {
+                MyApplication.getInstance().finishActivity(TertiaryDetailsActivity.this);
+            }
+        });
 
 
     }
@@ -103,20 +119,22 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
                     public void onAfter(String s, Exception e) {
                         super.onAfter(s, e);
                         mProgressActivity.showContent();
-                        final int[] sort ={0};
+                        final int[] sort = {0};
                         final SecondaryReclassify secondaryReclassify = gson.fromJson(s, SecondaryReclassify.class);
                         for (int i = 0; i < secondaryReclassify.getData().size(); i++) {
                             mThirdCategoryTab.addTab(mThirdCategoryTab.newTab().setText(secondaryReclassify.getData().get(i).getCatsName()));
                         }
+                        mTitlebar.setText(secondaryReclassify.getData().get(0).getCatsName());
 //                        顶部导航
                         final int[] posid = {0};
                         mThirdCategoryTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                             @Override
                             public void onTabSelected(TabLayout.Tab tab) {
                                 posid[0] = tab.getPosition();
-                                if(sort[0]==0){
+                                mTitlebar.setText(secondaryReclassify.getData().get(tab.getPosition()).getCatsName());
+                                if (sort[0] == 0) {
                                     Submitgoods(secondaryReclassify, tab, posid[0]);
-                                }else{
+                                } else {
                                     switch (sort[0]) {
                                         case 1:
                                             SubmitCommodityOrdering(secondaryReclassify, tab, posid[0], Constant.SALESVOLUME);
@@ -152,16 +170,16 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
                                         break;
                                     case 1:
                                         SubmitCommodityOrdering(secondaryReclassify, tab, posid[0], Constant.SALESVOLUME);
-                                        sort[0] =1;
+                                        sort[0] = 1;
                                         break;
                                     case 2:
                                         SubmitCommodityOrdering(secondaryReclassify, tab, posid[0], Constant.NEWGOOGS);
-                                        sort[0] =2;
+                                        sort[0] = 2;
                                         break;
                                     case 3:
                                         SubmitCommodityOrdering(secondaryReclassify, tab, posid[0], Constant.HIGHPRICE);
-                                        click =false;
-                                        sort[0] =3;
+                                        click = false;
+                                        sort[0] = 3;
                                         break;
 
                                 }
@@ -176,12 +194,12 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
                             public void onTabReselected(TabLayout.Tab tab) {
                                 switch (tab.getPosition()) {
                                     case 3:
-                                        if (!click ) {
+                                        if (!click) {
                                             SubmitCommodityOrdering(secondaryReclassify, tab, posid[0], Constant.LOWPRICE);
-                                            click =true;
+                                            click = true;
                                         } else {
                                             SubmitCommodityOrdering(secondaryReclassify, tab, posid[0], Constant.HIGHPRICE);
-                                            click =false;
+                                            click = false;
                                         }
 
                                         break;
@@ -189,7 +207,7 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
                                 }
                             }
                         });
-                        setPricelistTab();
+                        Constant.setPricelistTab(mPricelistTab);
                     }
 
                     @Override
@@ -315,16 +333,6 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
         }
     }
 
-    /**
-     * 销量
-     */
-    public void setPricelistTab() {
-        mPricelistTab.addTab(mPricelistTab.newTab().setText("综合"));
-        mPricelistTab.addTab(mPricelistTab.newTab().setText("销量"));
-        mPricelistTab.addTab(mPricelistTab.newTab().setText("新品"));
-        mPricelistTab.addTab(mPricelistTab.newTab().setText("价格"));
-
-    }
 
     //界面 悬停
     @Override

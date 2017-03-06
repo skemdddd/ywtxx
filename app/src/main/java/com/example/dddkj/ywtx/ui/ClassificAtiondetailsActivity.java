@@ -76,12 +76,25 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
-        mToolbar.setOnButtonClickListener(new Titlebar.OnButtonClickListener() {
+        mToolbar.setVisibilityHide("seek");
+        mToolbar.setOnTitleBarClickListener(new Titlebar.TitleBarClickListener() {
+            @Override
+            public void onim() {
+
+            }
+
+            @Override
+            public void Onseek() {
+
+            }
+
             @Override
             public void Onback() {
                 MyApplication.getInstance().finishActivity(ClassificAtiondetailsActivity.this);
             }
         });
+
+
 
     }
 
@@ -157,11 +170,16 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        SecondaryReclassify secondaryReclassify = gson.fromJson(s, SecondaryReclassify.class);
+                        final SecondaryReclassify secondaryReclassify = gson.fromJson(s, SecondaryReclassify.class);
                         ActivitySecondReclassify activitySecondReclassify = new ActivitySecondReclassify(ClassificAtiondetailsActivity.this, secondaryReclassify, getRootView(ClassificAtiondetailsActivity.this), 4);
                         activitySecondReclassify.setClassify();
 
-                    }
+                        }
+
+
+
+
+
                 });
 
 
@@ -193,4 +211,8 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
         mBGABanner.setData(bannerImage, bannerTitle);
 
     }
+
+
+
+
 }

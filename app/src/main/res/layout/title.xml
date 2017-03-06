@@ -25,6 +25,29 @@
             android:layout_marginStart="9dp"
             android:src="@mipmap/signin_back" android:layout_centerVertical="true"
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+        <ImageView
+            android:padding="6dp"
+            android:id="@+id/iminage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/personal_message"/>
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/seekimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="30dp"
+            android:src="@mipmap/search"/>
+
     </RelativeLayout>
 
 </LinearLayout>

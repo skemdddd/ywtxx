@@ -1,5 +1,6 @@
 package com.example.dddkj.ywtx.Fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -19,6 +20,7 @@ import com.example.dddkj.ywtx.Entity.MyClassifySection;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.NullStringToEmptyAdapterFactory;
 import com.example.dddkj.ywtx.common.RequesURL;
+import com.example.dddkj.ywtx.ui.ClassifySortActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lzy.okgo.OkGo;
@@ -54,15 +56,6 @@ public class ClassifyFragment extends BaseFragment {
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
         return inflater.inflate(R.layout.fragment_classify,container,false);
-//        if(NetUtils.isConnected(this)!=true) {
-//            mProgressActivity.showError(getResources().getDrawable(R.mipmap.ic_error_page), getResources().getString(R.string.progressActivityErrorTitlePlaceholder),
-//                    getResources().getString(R.string.progressActivityErrorContentPlaceholder), "点击重试", new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            return;
-//                        }
-//                    });
-//        }
 
     }
     public void initAdapter(){
@@ -109,6 +102,19 @@ public class ClassifyFragment extends BaseFragment {
             }
 
         });
+//
+        mRigetClassifyList.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(mRigetClassifyList.getContext(), ClassifySortActivity.class);
+                MyClassifySection myClassifySection = (MyClassifySection) adapter.getData().get(position);
+                intent.putExtra("id",myClassifySection.t.getCatsId());
+                intent.putExtra("title",myClassifySection.t.getCatsName());
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override

@@ -19,6 +19,9 @@ import com.example.dddkj.ywtx.R;
 public class Titlebar extends RelativeLayout {
     private ImageView iv;
     private TextView  tv;
+    private ImageView seek;
+    private ImageView im;
+
 
     public Titlebar(Context context) {
         super(context);
@@ -29,27 +32,73 @@ public class Titlebar extends RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.title,this,true);
         iv= (ImageView) findViewById(R.id.title_back);
         tv= (TextView) findViewById(R.id.title_text);
+        seek = (ImageView) findViewById(R.id.seekimage);
+        im = (ImageView) findViewById(R.id.iminage);
+
     }
 
+
     /**
+     *
+     * 隐藏
+     * @param nem
+     */
+    public void setVisibilityHide(String nem){
+        if(nem.equals("seek")){
+            seek.setVisibility(GONE);
+        }else if (nem.equals("im")){
+            im.setVisibility(GONE);
+        }else{
+            seek.setVisibility(GONE);
+            im.setVisibility(GONE);
+        }
+
+
+    }
+    /**
+     *
+     * 文字增加
      * @param text
      */
     public void setText(String text){
         tv.setText(text);
     }
-    public interface OnButtonClickListener{
+   public interface TitleBarClickListener{
+        void onim();
+        void Onseek();
         void Onback();
     }
-    public void setOnButtonClickListener(final OnButtonClickListener onButtonClickListener){
+    public void setOnTitleBarClickListener(final TitleBarClickListener onButtonClickListener){
         if(onButtonClickListener !=null){
             if(iv !=null){
                 iv.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         onButtonClickListener.Onback();
+
+                    }
+
+                });
+            }
+            if(seek!=null){
+                seek.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onButtonClickListener.Onseek();
+                    }
+                });
+            }
+            if(im!=null){
+                im.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onButtonClickListener.onim();
                     }
                 });
             }
         }
+
     }
+
+
 }

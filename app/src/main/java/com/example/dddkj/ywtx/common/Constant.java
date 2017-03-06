@@ -1,5 +1,7 @@
 package com.example.dddkj.ywtx.common;
 
+import android.support.design.widget.TabLayout;
+
 /**
  * 项目名称：亿我同行
  * <p>
@@ -11,4 +13,14 @@ public class Constant {
     public static final String NEWGOOGS = "time";
     public static final String HIGHPRICE = "highPrice";
     public static final String LOWPRICE = "lowPrice";
+    /**
+     * 销量
+     */
+    public static void setPricelistTab(TabLayout tab) {
+        tab.addTab(tab.newTab().setText("综合"));
+        tab.addTab(tab.newTab().setText("销量"));
+        tab.addTab(tab.newTab().setText("新品"));
+        tab.addTab(tab.newTab().setText("价格"));
+
+    }
 }

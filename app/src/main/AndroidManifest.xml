@@ -27,6 +27,9 @@
         <activity android:name=".ui.TertiaryDetailsActivity">
 
         </activity>
+        <activity android:name=".ui.ClassifySortActivity">
+
+        </activity>
 
     </application>
 
