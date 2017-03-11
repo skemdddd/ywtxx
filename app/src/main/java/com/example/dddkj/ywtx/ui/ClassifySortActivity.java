@@ -204,7 +204,7 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
     //界面 悬停
     @Override
     public void onScroll(int scrollY) {
-        if (scrollY >= mPricelistTab.getBottom()) {
+        if (scrollY >= search02.getBottom()) {
             if (mPricelistTab.getParent() != search01) {
                 search02.removeView(mPricelistTab);
                 search01.addView(mPricelistTab);

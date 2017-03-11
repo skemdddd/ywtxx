@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+    <com.example.dddkj.ywtx.Widget.Titlebar
+        android:id="@id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.dddkj.ywtx.Widget.Titlebar>
+    <com.example.dddkj.ywtx.utils.ProgressActivity
+
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/comment_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relativeLayout3">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </com.example.dddkj.ywtx.utils.ProgressActivity>
+
+
+</LinearLayout>

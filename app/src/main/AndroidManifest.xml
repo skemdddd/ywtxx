@@ -30,6 +30,17 @@
         <activity android:name=".ui.ClassifySortActivity">
 
         </activity>
+        <activity
+            android:label="商品详情"
+            android:name=".ui.MerchandiseNewsActivity">
+
+        </activity>
+
+        <activity
+            android:label="全部评论"
+            android:name=".ui.AllCommentsActivity">
+
+        </activity>
 
     </application>
 

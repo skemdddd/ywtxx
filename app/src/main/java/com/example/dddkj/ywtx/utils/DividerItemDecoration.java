@@ -94,8 +94,8 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration{
             final View child = parent.getChildAt( i ) ;
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + layoutParams.rightMargin ;
-            final int right = left + mItemSize ;
-            canvas.drawRect(left,top,right,bottom,mPaint);
+//            final int right = left + mItemSize ;
+            canvas.drawRect(left,top,0,bottom,mPaint);
         }
     }
 

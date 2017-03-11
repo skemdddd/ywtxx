@@ -4,7 +4,6 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.dddkj.ywtx.R;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
 
@@ -27,7 +26,6 @@ public class HomeBGABannerAdapter implements BGABanner.Adapter<ImageView,String>
         Glide.with(context)
                 .load(model)
                 .crossFade()
-                .placeholder(R.mipmap.home_page_banner)
                 .into(itemView);
     }
 }

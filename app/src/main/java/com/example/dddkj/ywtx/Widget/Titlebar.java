@@ -63,6 +63,7 @@ public class Titlebar extends RelativeLayout {
     public void setText(String text){
         tv.setText(text);
     }
+
    public interface TitleBarClickListener{
         void onim();
         void Onseek();

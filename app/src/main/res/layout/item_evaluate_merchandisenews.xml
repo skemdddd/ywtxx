@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:padding="10dp"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="30dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userhead_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                tools:src="@mipmap/personal_collection"/>
+            <TextView
+                android:textColor="#333"
+                android:textSize="14dp"
+                android:id="@+id/username_tv"
+                android:gravity="center"
+                tools:text="带回带回待会"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp" android:layout_marginStart="6dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/userhead_image"
+                android:layout_toEndOf="@+id/userhead_image"/>
+            <TextView
+                android:id="@+id/time_tv"
+                tools:text="201512355"
+                android:gravity="bottom|center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/username_tv"
+                android:layout_alignBottom="@+id/username_tv" android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+       />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+        <TextView
+            android:textSize="13sp"
+            android:textColor="#333"
+            android:id="@+id/usercomment_tv"
+            android:layout_marginTop="11dp"
+            tools:text="的时刻即将到来就是考虑到就是利空打击了"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="12sp"
+            android:textColor="#6a6a6a"
+            android:id="@+id/commodity_property_tv"
+            android:layout_marginTop="11dp"
+            tools:text="的时刻即将到来就是考虑到就是利空打击了"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <GridView
+        android:layout_marginTop="15dp"
+        android:numColumns="5"
+        android:columnWidth="30dp"
+        android:id="@+id/review_images_gv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </GridView>
+
+</LinearLayout>

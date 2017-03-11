@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             >
+    <com.example.dddkj.ywtx.Widget.Titlebar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.dddkj.ywtx.Widget.Titlebar>
+    <com.example.dddkj.ywtx.utils.ProgressActivity
+        android:id="@+id/progressActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titlebar">
+        <com.lzy.widget.VerticalSlide
+            android:id="@+id/VerticalSlide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+        >
+
+            <include layout="@layout/merchandisenews_fragment">
+
+            </include>
+            <include layout="@layout/malldetails_web">
+
+            </include>
+
+
+
+        </com.lzy.widget.VerticalSlide>
+    </com.example.dddkj.ywtx.utils.ProgressActivity>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ll_good_detail_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true" >
+        <View
+            android:layout_gravity="bottom"
+            android:background="#b3b3b3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp">
+
+        </View>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_weight="3"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_good_detail_collect"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_weight="1"
+                        android:id="@+id/iv_good_detai_collect_unselect"
+                        android:src="@mipmap/details_news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_weight="1"
+                        android:id="@+id/iv_good_detai_collect_select"
+                        android:src="@mipmap/details_enter_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_weight="1"
+                        android:id="@+id/iv_good_detai_collect_select123"
+                        android:src="@mipmap/details_collection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            >
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:background="#ffb129"
+                    android:id="@+id/tv_good_detail_shop_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="加入购物车" />
+
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:background="#cf292e"
+                    android:id="@+id/tv_good_detail_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="立即购买" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

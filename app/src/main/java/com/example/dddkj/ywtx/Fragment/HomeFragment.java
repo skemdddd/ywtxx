@@ -20,13 +20,16 @@ import com.example.dddkj.ywtx.Adapter.HomeRecommendedAdapter;
 import com.example.dddkj.ywtx.Base.BaseFragment;
 import com.example.dddkj.ywtx.Entity.HomeAdvert;
 import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
+import com.example.dddkj.ywtx.Entity.HomePopularity;
 import com.example.dddkj.ywtx.Entity.HomePopularityRoot;
 import com.example.dddkj.ywtx.Entity.HomeRecommendRoot;
 import com.example.dddkj.ywtx.MainActivity;
+import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.HomeFragmentClassify;
 import com.example.dddkj.ywtx.common.RequesURL;
 import com.example.dddkj.ywtx.ui.LoginAcivity;
+import com.example.dddkj.ywtx.ui.MerchandiseNewsActivity;
 import com.example.dddkj.ywtx.utils.T;
 import com.example.dddkj.ywtx.utils.VerticalSpaceItemDecoration;
 import com.google.gson.Gson;
@@ -91,10 +94,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initListener() {
         Logger.i("主页");
+//        人气商品
         mPopularityList.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                T.showToast(getContext(), "点击" + position);
+                Intent intent = new Intent(getActivity(), MerchandiseNewsActivity.class);
+                HomePopularity homePopularity = (HomePopularity) adapter.getData().get(position);
+                intent.putExtra("goodsid",homePopularity.getGId());
+                startActivity(intent);
             }
 
 
@@ -194,10 +201,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                         HomePopularityRoot popularityRoot = gson.fromJson(s, HomePopularityRoot.class);
                         mPopularityList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                         mPopularityList.setHasFixedSize(true);
+                        mPopularityList.setNestedScrollingEnabled(false);
                         mPopularityAdapter = new HomePopularityAdapter(R.layout.item_home_popularity, popularityRoot.getData());
                         mPopularityList.setAdapter(mPopularityAdapter);
                         mPopularityList.addItemDecoration(new VerticalSpaceItemDecoration(20));
-                        Glide.with(getContext())
+                        Glide.with(MyApplication.getInstance())
                                 .load(RequesURL.URL + popularityRoot.getMessage())
                                 .asBitmap()
                                 .into(new SimpleTarget<Bitmap>() {

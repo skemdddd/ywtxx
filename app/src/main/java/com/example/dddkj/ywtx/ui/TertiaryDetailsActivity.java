@@ -28,6 +28,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import okhttp3.Call;
@@ -118,6 +119,7 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
                     @Override
                     public void onAfter(String s, Exception e) {
                         super.onAfter(s, e);
+                        Logger.json(s);
                         mProgressActivity.showContent();
                         final int[] sort = {0};
                         final SecondaryReclassify secondaryReclassify = gson.fromJson(s, SecondaryReclassify.class);
@@ -337,7 +339,7 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
     //界面 悬停
     @Override
     public void onScroll(int scrollY) {
-        if (scrollY >= mPricelistTab.getBottom()) {
+        if (scrollY >= search02.getBottom()) {
             if (mPricelistTab.getParent() != search01) {
                 search02.removeView(mPricelistTab);
                 search01.addView(mPricelistTab);
