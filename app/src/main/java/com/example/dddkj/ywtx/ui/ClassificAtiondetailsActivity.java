@@ -11,12 +11,15 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.dddkj.ywtx.Adapter.ClassificAtiondetailsAdapter;
 import com.example.dddkj.ywtx.Adapter.HomeBGABannerAdapter;
 import com.example.dddkj.ywtx.Base.BaseActivity;
 import com.example.dddkj.ywtx.Entity.SecondaryBGABanner;
 import com.example.dddkj.ywtx.Entity.SecondaryReclassify;
 import com.example.dddkj.ywtx.Entity.SecondaryRecommendation;
+import com.example.dddkj.ywtx.Entity.SecondaryRecommendationData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.ActivitySecondReclassify;
@@ -42,7 +45,7 @@ import okhttp3.Response;
 
 /**
  * 项目名称：亿我同行
- * <首页分类详情1>
+ * <首页二级分类详情1>
  * 创建时间：2017/2/27 9:33
  */
 
@@ -76,6 +79,7 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
+        initView();
         mToolbar.setVisibilityHide("seek");
         mToolbar.setOnTitleBarClickListener(new Titlebar.TitleBarClickListener() {
             @Override
@@ -93,9 +97,24 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                 MyApplication.getInstance().finishActivity(ClassificAtiondetailsActivity.this);
             }
         });
+        mPopularityList.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(ClassificAtiondetailsActivity.this, MerchandiseNewsActivity.class);
+                SecondaryRecommendationData secondaryRecommendationData = (SecondaryRecommendationData) adapter.getData().get(position);
+                intent.putExtra("goodsid", secondaryRecommendationData.getGId());
+                startActivity(intent);
+            }
+        });
 
 
+    }
 
+    public void initView() {
+        mPopularityList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        mPopularityList.setHasFixedSize(true);
+        mClassificAtiondetailsAdapter = new ClassificAtiondetailsAdapter(R.layout.item_classification_deails, null);
+        mPopularityList.setAdapter(mClassificAtiondetailsAdapter);
     }
 
 
@@ -121,10 +140,7 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
 
                         mProgressActivity.showContent();
                         SecondaryRecommendation secondaryRecommendation = gson.fromJson(s, SecondaryRecommendation.class);
-                        mPopularityList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                        mPopularityList.setHasFixedSize(true);
-                        mClassificAtiondetailsAdapter = new ClassificAtiondetailsAdapter(R.layout.item_classification_deails, secondaryRecommendation.getData());
-                        mPopularityList.setAdapter(mClassificAtiondetailsAdapter);
+                        mClassificAtiondetailsAdapter.setNewData(secondaryRecommendation.getData());
                         Glide.with(getBaseContext())
                                 .load(RequesURL.URL + secondaryRecommendation.getMessage())
                                 .asBitmap()
@@ -174,10 +190,7 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
                         ActivitySecondReclassify activitySecondReclassify = new ActivitySecondReclassify(ClassificAtiondetailsActivity.this, secondaryReclassify, getRootView(ClassificAtiondetailsActivity.this), 4);
                         activitySecondReclassify.setClassify();
 
-                        }
-
-
-
+                    }
 
 
                 });
@@ -211,8 +224,6 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
         mBGABanner.setData(bannerImage, bannerTitle);
 
     }
-
-
 
 
 }

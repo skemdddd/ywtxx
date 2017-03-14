@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              >
@@ -12,24 +13,25 @@
         android:id="@+id/progressActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titlebar">
+        android:layout_below="@+id/titlebar"
+        android:layout_above="@+id/ll_good_detail_bottom">
         <com.lzy.widget.VerticalSlide
-            android:id="@+id/VerticalSlide"
+            android:id="@+id/verticalSlide"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
+            <include
 
-        >
+                layout="@layout/merchandisenews_fragment">
+            </include>
+            <include
 
-            <include layout="@layout/merchandisenews_fragment">
+                layout="@layout/malldetails_web">
 
             </include>
-            <include layout="@layout/malldetails_web">
-
-            </include>
-
 
 
         </com.lzy.widget.VerticalSlide>
+
     </com.example.dddkj.ywtx.utils.ProgressActivity>
     <LinearLayout
         android:layout_alignParentBottom="true"
@@ -123,6 +125,20 @@
 
 
     </LinearLayout>
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/back_top"
+        android:background="@color/transparency"
+        android:src="@mipmap/top"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_good_detail_bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="15dp"/>
 
 
 

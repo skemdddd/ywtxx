@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.lzy.widget.vertical.VerticalScrollView
-    android:id="@+id/scrollview"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hedgehog="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
-    xmlns:hedgehog="http://schemas.android.com/apk/res-auto"
 >
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,13 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textSize="17sp"
-                    android:textColor="#333"
-                    android:textStyle="bold"
                     android:id="@+id/tradename_text"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:textColor="#333"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
                     tools:text="日本卡乐比Calbee Jagabee 薯条三兄弟 淡盐"/>
                 <TextView
                     android:id="@+id/imageButton2"
@@ -64,9 +64,9 @@
                     android:id="@+id/amount_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="48"
                     android:textColor="#cf282d"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp"
+                    tools:text="48"/>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -75,25 +75,25 @@
                     android:layout_marginLeft="17dp">
 
                     <TextView
-                        android:layout_marginTop="10dp"
                         android:id="@+id/marketprice_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
+                        android:layout_marginTop="10dp"
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
-                        tools:text="159"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp"
+                        tools:text="159"/>
 
                     <View
-                        android:layout_marginTop="20dp"
                         android:id="@+id/view"
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
                         android:layout_alignLeft="@+id/marketprice_tv"
                         android:layout_alignRight="@+id/marketprice_tv"
+                        android:layout_marginTop="20dp"
                         android:background="#acacac"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -105,19 +105,19 @@
 
                 <TextView
                     android:id="@+id/sales_volume_tv"
-                    android:textSize="13sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textSize="13sp"
                     tools:text="快递：12.00"/>
 
                 <TextView
                     android:id="@+id/courier_tv"
-                    android:textSize="13sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textSize="13sp"
                     tools:text="1321人付款"/>
 
                 <TextView
@@ -131,10 +131,10 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_marginTop="1dp"
             android:id="@+id/feedback_rlyt"
             android:layout_width="match_parent"
             android:layout_height="41dp"
+            android:layout_marginTop="1dp"
             android:background="@drawable/ll_customer_selector"
             android:clickable="true"
         >
@@ -204,22 +204,22 @@
                 android:src="@mipmap/personal_enter"/>
         </RelativeLayout>
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
             android:background="@color/white"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/comment_number_tv"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="#333"
-                android:textSize="15sp"
-                android:layout_marginLeft="10dp"
-                android:text="评论(100)"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="评论(100)"
+                android:textColor="#333"
+                android:textSize="15sp"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/comment_rv"
                 android:layout_width="match_parent"
@@ -229,18 +229,18 @@
         </LinearLayout>
         <TextView
             android:id="@+id/all_comments_tv"
-            android:background="@drawable/ll_customer_selector"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_gravity="center"
+            android:background="@drawable/ll_customer_selector"
             android:gravity="center"
             android:text="查看全部评价  >"
             android:textColor="#d52a29"
             android:textSize="14sp"/>
         <LinearLayout
-            android:layout_marginTop="11dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="11dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:padding="10dp">
@@ -248,10 +248,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:scaleType="fitXY"
                     android:id="@+id/shoplogo_image"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
+                    android:scaleType="fitXY"
                     tools:src="@mipmap/details_logo"/>
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -259,31 +259,31 @@
                     android:layout_marginTop="5dp"
                 >
                     <TextView
-                        android:layout_marginLeft="11dp"
-                        android:textSize="15sp"
                         android:id="@+id/shopname_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
                         android:gravity="center"
-                        tools:text="极品小茶屋"
-                        android:textColor="#333"/>
+                        android:textColor="#333"
+                        android:textSize="15sp"
+                        tools:text="极品小茶屋"/>
                     <com.hedgehog.ratingbar.RatingBar
-                        android:layout_marginTop="3dp"
-                        android:layout_marginLeft="8dp"
                         android:id="@+id/ratingbar"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/shopname_tv"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="3dp"
                         hedgehog:clickable="false"
                         hedgehog:halfstart="false"
                         hedgehog:starCount="5"
-                        hedgehog:starImagePadding="1dp"
-                        hedgehog:starImageHeight="17dp"
                         hedgehog:starEmpty="@mipmap/hui"
                         hedgehog:starFill="@mipmap/red"
                         hedgehog:starHalf="@mipmap/red_hui"
-                        android:layout_below="@+id/shopname_tv"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"/>
+                        hedgehog:starImageHeight="17dp"
+                        hedgehog:starImagePadding="1dp"/>
 
                 </RelativeLayout>
 
@@ -311,8 +311,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true" android:layout_marginLeft="39dp"
                         android:layout_marginStart="39dp"
-                        tools:text="9.6|高"
-                        android:textColor="#d12428" android:textSize="13sp"/>
+                        android:textColor="#d12428"
+                        android:textSize="13sp" tools:text="9.6|高"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -331,8 +331,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true" android:layout_marginLeft="39dp"
-                        android:layout_marginStart="39dp" tools:text="9.6|高"
-                        android:textColor="#d12428" android:textSize="13sp"/>
+                        android:layout_marginStart="39dp" android:textColor="#d12428"
+                        android:textSize="13sp" tools:text="9.6|高"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -351,8 +351,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true" android:layout_marginLeft="39dp"
-                        android:layout_marginStart="39dp" tools:text="9.6|高"
-                        android:textColor="#d12428" android:textSize="13sp"/>
+                        android:layout_marginStart="39dp" android:textColor="#d12428"
+                        android:textSize="13sp" tools:text="9.6|高"/>
 
                 </RelativeLayout>
 
@@ -380,10 +380,10 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_marginTop="1dp"
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
         >
             <View
                 android:layout_width="wrap_content"
@@ -391,14 +391,14 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:layout_toLeftOf="@+id/tv_good_detail_tuodong"
-                android:background="#dadada" />
+                android:background="#dadada"/>
             <TextView
                 android:id="@+id/tv_good_detail_tuodong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="继续拖动,查看图文详情"
-                android:textSize="13sp" />
+                android:textSize="13sp"/>
 
             <View
                 android:layout_width="wrap_content"
@@ -408,12 +408,8 @@
                 android:layout_toRightOf="@+id/tv_good_detail_tuodong"
                 android:background="#dadada"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_marginTop="1dp"
-            android:background="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-        />
+
+
     </LinearLayout>
 
 

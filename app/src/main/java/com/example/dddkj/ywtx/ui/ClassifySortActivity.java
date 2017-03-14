@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.dddkj.ywtx.Adapter.TertiaryDetailsAdapter;
 import com.example.dddkj.ywtx.Base.BaseActivity;
 import com.example.dddkj.ywtx.Entity.ThirdGoogs;
+import com.example.dddkj.ywtx.Entity.ThirdGoogsData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.MyScrollview;
@@ -97,6 +100,15 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
         mTertiaryDetailsAdapter = new TertiaryDetailsAdapter(R.layout.item_home_popularity, null);
         mGoodsList.setAdapter(mTertiaryDetailsAdapter);
         mGoodsList.addItemDecoration(new VerticalSpaceItemDecoration(20));
+        mGoodsList.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(ClassifySortActivity.this, MerchandiseNewsActivity.class);
+                ThirdGoogsData thirdGoogsData = (ThirdGoogsData)adapter.getData().get(position);
+                intent.putExtra("goodsid",thirdGoogsData.getGId());
+                startActivity(intent);
+            }
+        });
 
     }
 

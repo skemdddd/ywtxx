@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
 import com.lzy.widget.VerticalSlide;
-import com.lzy.widget.vertical.VerticalWebView;
+import com.lzy.widget.vertical.VerticalScrollView;
 import com.orhanobut.logger.Logger;
 
 import org.apache.http.util.EncodingUtils;
@@ -51,7 +52,7 @@ import static com.example.dddkj.ywtx.R.id.webView;
 
 /**
  * 项目名称：亿我同行
- * <p>
+ * <分类详情>
  * 创建时间：2017/3/7 11:01
  */
 
@@ -97,19 +98,23 @@ public class MerchandiseNewsActivity extends BaseActivity {
     MerchandiseCommentAdapter mMerchandiseCommentAdapter;
     @BindView(R.id.comment_number_tv)
     TextView comment_number_tv;
-    @BindView(R.id.VerticalSlide)
-    VerticalSlide mVerticalSlide;
     @BindView(R.id.tab)
     TabLayout mTabLayout;
     @BindView(webView)
-    VerticalWebView mWebView;
+    WebView mWebView;
     String postData;
     @BindView(R.id.webViewarr)
-    VerticalWebView mWebViewarr;
+    WebView mWebViewarr;
     @BindView(R.id.progressActivity)
     ProgressActivity mProgressActivity;
     @BindView(R.id.all_comments_tv)
     TextView mAllComments_tv;
+    @BindView(R.id.back_top)
+    ImageButton mBackTop;
+    @BindView(R.id.verticalSlide)
+    VerticalSlide mVerticalSlide;
+    @BindView(R.id.scrollview)
+    VerticalScrollView TopView;
 
 
 
@@ -117,7 +122,6 @@ public class MerchandiseNewsActivity extends BaseActivity {
     protected void loadViewLayout() {
         setContentView(R.layout.malldetails_activity);
         mIntent = getIntent();
-        Logger.i("id" + mIntent.getStringExtra("goodsid"));
 
 
     }
@@ -125,23 +129,22 @@ public class MerchandiseNewsActivity extends BaseActivity {
     @Override
     protected void setListener() {
         initView();
-        if(mWebView!= null){
+        if (mWebView != null) {
             postData = "goodsid=" + mIntent.getStringExtra("goodsid");
             mWebView.postUrl(RequesURL.GOODSDETAILSWEB, EncodingUtils.getBytes(postData, "base64"));
         }
-
-
         mVerticalSlide.setOnShowNextPageListener(new VerticalSlide.OnShowNextPageListener() {
-
             @Override
             public void onShowNextPage() {
+                mBackTop.setVisibility(View.VISIBLE);
                 mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         switch (tab.getPosition()) {
                             case 0:
-                                if(mWebView!= null){
+
+                                if (mWebView != null) {
                                     postData = "goodsid=" + mIntent.getStringExtra("goodsid");
                                     mWebView.postUrl(RequesURL.GOODSDETAILSWEB, EncodingUtils.getBytes(postData, "base64"));
                                 }
@@ -150,7 +153,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
                                 mWebView.setVisibility(View.VISIBLE);
                                 break;
                             case 1:
-                                if(mWebView!= null){
+                                if (mWebView != null) {
                                     postData = "goodsid=" + mIntent.getStringExtra("goodsid");
                                     mWebViewarr.postUrl(RequesURL.GOODSDETAILSWEBARRR, EncodingUtils.getBytes(postData, "base64"));
                                 }
@@ -176,10 +179,12 @@ public class MerchandiseNewsActivity extends BaseActivity {
             }
         });
 
+
+
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageFinished(WebView view,String url)
-            {
+            public void onPageFinished(WebView view, String url) {
                 mTabLayout.setVisibility(View.VISIBLE);
             }
 
@@ -203,13 +208,15 @@ public class MerchandiseNewsActivity extends BaseActivity {
         });
 
         mAllComments_tv.setOnClickListener(this);
+        mBackTop.setOnClickListener(this);
 
 
     }
 
 
     public void initView() {
-
+        mWebView.setVerticalScrollBarEnabled(false);
+        mWebViewarr.setVerticalScrollBarEnabled(false);
         mTabLayout.addTab(mTabLayout.newTab().setText("图文详情"));
         mTabLayout.addTab(mTabLayout.newTab().setText("产品参数"));
         mTitlebar.setText("商品详情");
@@ -271,9 +278,8 @@ public class MerchandiseNewsActivity extends BaseActivity {
                                 });
 
 
-
                         mMerchandiseCommentAdapter.setNewData(googsNews.getData().getAppraisesList());
-                        if(mMerchandiseCommentAdapter.getData().size() == 0){
+                        if (mMerchandiseCommentAdapter.getData().size() == 0) {
                             mMerchandiseCommentAdapter.setEmptyView(R.layout.comment_empty, (ViewGroup) mCommentList.getParent());
                         }
 //                        评价
@@ -292,16 +298,28 @@ public class MerchandiseNewsActivity extends BaseActivity {
 
     @Override
     protected Context getActivityContext() {
-        return null;
+        return MyApplication.getInstance();
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.all_comments_tv:
-                Intent intent = new Intent(MerchandiseNewsActivity.this,AllCommentsActivity.class);
-                intent.putExtra("goodsid",mIntent.getStringExtra("goodsid"));
+                Intent intent = new Intent(MerchandiseNewsActivity.this, AllCommentsActivity.class);
+                intent.putExtra("goodsid", mIntent.getStringExtra("goodsid"));
                 startActivity(intent);
+                break;
+            case R.id.back_top:
+                mVerticalSlide.goTop(new VerticalSlide.OnGoTopListener() {
+                    @Override
+                    public void goTop() {
+                        mBackTop.setVisibility(View.GONE);
+                        TopView.goTop();
+                    }
+                });
+                break;
+
+
         }
     }
 

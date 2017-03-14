@@ -18,13 +18,15 @@
         android:layout_marginTop="1dp"
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="fill_parent"/>
     <com.lzy.widget.vertical.VerticalWebView
         android:layout_marginTop="1dp"
         android:visibility="gone"
         android:id="@+id/webViewarr"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="fill_parent"/>
+
+
 
 
 

@@ -22,6 +22,7 @@ import com.example.dddkj.ywtx.Entity.HomeAdvert;
 import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
 import com.example.dddkj.ywtx.Entity.HomePopularity;
 import com.example.dddkj.ywtx.Entity.HomePopularityRoot;
+import com.example.dddkj.ywtx.Entity.HomeRecommend;
 import com.example.dddkj.ywtx.Entity.HomeRecommendRoot;
 import com.example.dddkj.ywtx.MainActivity;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
@@ -109,8 +110,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mRecommendList.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getActivity(), MerchandiseNewsActivity.class);
+                HomeRecommend homeRecommend = (HomeRecommend)adapter.getData().get(position);
+                intent.putExtra("goodsid",homeRecommend.getGId());
+                startActivity(intent);
 
-                T.showToast(getContext(), "点击" + position);
             }
 
         });

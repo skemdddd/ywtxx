@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.dddkj.ywtx.Adapter.TertiaryDetailsAdapter;
 import com.example.dddkj.ywtx.Base.BaseActivity;
 import com.example.dddkj.ywtx.Entity.SecondaryReclassify;
 import com.example.dddkj.ywtx.Entity.ThirdGoogs;
+import com.example.dddkj.ywtx.Entity.ThirdGoogsData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.MyScrollview;
@@ -36,7 +39,7 @@ import okhttp3.Response;
 
 /**
  * 项目名称：亿我同行
- * <p>
+ * <三级分类>
  * 创建时间：2017/3/3 9:48
  */
 
@@ -66,6 +69,7 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
 
     @Override
     protected void loadViewLayout() {
+        Logger.i("三级分类");
         setContentView(R.layout.activity_classification_details);
         Intent intent = getIntent();
         typeid = intent.getStringExtra("id");
@@ -103,6 +107,15 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
         mTertiaryDetailsAdapter = new TertiaryDetailsAdapter(R.layout.item_home_popularity, null);
         mGoodsList.setAdapter(mTertiaryDetailsAdapter);
         mGoodsList.addItemDecoration(new VerticalSpaceItemDecoration(20));
+        mGoodsList.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(TertiaryDetailsActivity.this, MerchandiseNewsActivity.class);
+                ThirdGoogsData thirdGoogsData = (ThirdGoogsData)adapter.getData().get(position);
+                intent.putExtra("goodsid",thirdGoogsData.getGId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
