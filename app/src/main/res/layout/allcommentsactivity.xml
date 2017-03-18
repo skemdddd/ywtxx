@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
+              android:descendantFocusability="blocksDescendants"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/white"
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:background="@color/white"
@@ -71,6 +71,7 @@
                         android:layout_marginTop="10dp"
                         android:textColor="@color/tabText"
                         android:button="@null"
+                        android:background="@drawable/tab_evaluate"
                         android:gravity="center"
                         tools:text="差评"/>
                     <RadioButton
@@ -81,7 +82,8 @@
                         android:layout_marginLeft="100dp"
                         android:layout_marginTop="-26.5dp"
                         android:background="@drawable/tab_evaluate"
-                        android:button="@null" android:gravity="center"
+                        android:button="@null"
+                        android:gravity="center"
                         tools:text="图片"/>
 
 

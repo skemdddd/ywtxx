@@ -286,4 +286,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
 
+    @Override
+    public View getScrollableView() {
+        return null;
+    }
 }

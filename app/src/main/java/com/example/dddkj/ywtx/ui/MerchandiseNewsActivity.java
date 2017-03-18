@@ -115,6 +115,10 @@ public class MerchandiseNewsActivity extends BaseActivity {
     VerticalSlide mVerticalSlide;
     @BindView(R.id.scrollview)
     VerticalScrollView TopView;
+    @BindView(R.id.enterstore_ibtn)
+    ImageButton enterstore_ibtn;
+    @BindView(R.id.allshop_ibtn)
+    ImageButton allshop_ibtn;
 
 
 
@@ -252,7 +256,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
                         mProgressActivity.showContent();
 
 
-                        GoogsNews googsNews = gson.fromJson(s, GoogsNews.class);
+                        final GoogsNews googsNews = gson.fromJson(s,GoogsNews.class);
 //                        轮播图
                         setBGABanner(googsNews.getData().getString());
                         TradeName.setText(googsNews.getData().getGName());
@@ -277,7 +281,22 @@ public class MerchandiseNewsActivity extends BaseActivity {
                                     }
                                 });
 
-
+                        enterstore_ibtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intentStore = new Intent(MerchandiseNewsActivity.this,EnterStoreActivity.class);
+                                intentStore.putExtra("shopid",googsNews.getData().getSId());
+                                startActivity(intentStore);
+                            }
+                        });
+                        allshop_ibtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intentStore = new Intent(MerchandiseNewsActivity.this,AllShopActivity.class);
+                                intentStore.putExtra("shopid",googsNews.getData().getSId());
+                                startActivity(intentStore);
+                            }
+                        });
                         mMerchandiseCommentAdapter.setNewData(googsNews.getData().getAppraisesList());
                         if (mMerchandiseCommentAdapter.getData().size() == 0) {
                             mMerchandiseCommentAdapter.setEmptyView(R.layout.comment_empty, (ViewGroup) mCommentList.getParent());
@@ -286,6 +305,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
                         comment_number_tv.setText("评价" + "( " + googsNews.getData().getGoodsAppraisesNum().getNum() + " )");
 
                     }
+
 
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
@@ -318,6 +338,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
                     }
                 });
                 break;
+
 
 
         }

@@ -33,4 +33,11 @@ public class RequesURL {
     public static final String GOODSDETAILSWEBARRR =URL + INDEX + "m=Customer&c=Goods&a=goodsAttr";
 //    评论
     public static final String AllCOMMENTS =URL + INDEX + "m=Customer&c=GoodsAppraises&a=appraisesList";
+//    店铺详情
+    public static final String SHOPFRONTPAGE =URL + INDEX + "m=Customer&c=Shops&a=index";
+
+    public static  final String SHOPGOODSLIST =URL + INDEX + "m=Customer&c=Shops&a=shopGoodsList";
+//    店铺简介
+public static  final String SHOPABOUT =URL + INDEX + "m=Customer&c=shops&a=shopAbout";
+
 }

@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.dddkj.ywtx">
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
@@ -32,6 +32,7 @@
         </activity>
         <activity
             android:label="商品详情"
+
             android:name=".ui.MerchandiseNewsActivity">
 
         </activity>
@@ -39,6 +40,21 @@
         <activity
             android:label="全部评论"
             android:name=".ui.AllCommentsActivity">
+
+        </activity>
+        <activity
+            android:label="进入店铺"
+            android:name=".ui.EnterStoreActivity">
+
+        </activity>
+        <activity
+            android:label="店铺介绍"
+            android:name=".ui.AboutStoreActivity">
+
+        </activity>
+        <activity
+            android:label="全部商品"
+            android:name=".ui.AllShopActivity">
 
         </activity>
 

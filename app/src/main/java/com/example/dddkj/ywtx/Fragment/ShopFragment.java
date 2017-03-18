@@ -28,4 +28,9 @@ public class ShopFragment extends BaseFragment {
     protected void initData() {
 
     }
+
+    @Override
+    public View getScrollableView() {
+        return null;
+    }
 }

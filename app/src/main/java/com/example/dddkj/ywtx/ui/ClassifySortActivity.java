@@ -17,7 +17,7 @@ import com.example.dddkj.ywtx.Entity.ThirdGoogs;
 import com.example.dddkj.ywtx.Entity.ThirdGoogsData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
-import com.example.dddkj.ywtx.Widget.MyScrollview;
+import com.example.dddkj.ywtx.Widget.MySuspensionScrollview;
 import com.example.dddkj.ywtx.Widget.Titlebar;
 import com.example.dddkj.ywtx.common.Constant;
 import com.example.dddkj.ywtx.common.RequesURL;
@@ -40,7 +40,7 @@ import okhttp3.Response;
  * 创建时间：2017/3/6 14:57
  */
 
-public class ClassifySortActivity extends BaseActivity implements MyScrollview.OnScrollListener,TabLayout.OnTabSelectedListener{
+public class ClassifySortActivity extends BaseActivity implements MySuspensionScrollview.OnScrollListener,TabLayout.OnTabSelectedListener{
     @BindView(R.id.pricelist)
     TabLayout mPricelistTab;
     @BindView(R.id.goods)
@@ -56,8 +56,9 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
     @BindView(R.id.search02)
     RelativeLayout search02;
     @BindView(R.id.MyScrollview)
-    MyScrollview mMyScrollview;
+    MySuspensionScrollview mMyScrollview;
     boolean click = false;
+
     @Override
     protected void loadViewLayout() {
         setContentView(R.layout.activity_classify_sort);
@@ -88,7 +89,6 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
             }
         });
 
-
     }
 
     //    初始化控件
@@ -110,8 +110,10 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
             }
         });
 
-    }
 
+
+
+    }
     @Override
     protected void Request() {
         Submit();
@@ -148,6 +150,7 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
                             });
 
                         }
+
 
                     }
                     @Override
@@ -270,4 +273,5 @@ public class ClassifySortActivity extends BaseActivity implements MyScrollview.O
                 break;
         }
     }
+
 }

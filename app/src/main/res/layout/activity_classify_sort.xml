@@ -7,7 +7,7 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-    <com.example.dddkj.ywtx.Widget.MyScrollview
+    <com.example.dddkj.ywtx.Widget.MySuspensionScrollview
         android:id="@+id/MyScrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,7 +64,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </com.example.dddkj.ywtx.Widget.MyScrollview>
+    </com.example.dddkj.ywtx.Widget.MySuspensionScrollview>
     <LinearLayout
         android:id="@+id/search01"
         android:layout_width="match_parent"

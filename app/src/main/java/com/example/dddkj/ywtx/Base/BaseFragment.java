@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.scrollablelayout.ScrollableHelper;
+
 import butterknife.ButterKnife;
 
 /**
@@ -14,7 +16,7 @@ import butterknife.ButterKnife;
  *
  * 创建时间：2016/9/11 9:19
  */
-public abstract class BaseFragment extends Fragment{
+public abstract class BaseFragment extends Fragment implements ScrollableHelper.ScrollableContainer{
 
     private View mRootView;
     @Nullable

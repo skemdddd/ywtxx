@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.dddkj.ywtx.Widget.MyScrollview
+    <com.example.dddkj.ywtx.Widget.MySuspensionScrollview
         android:fillViewport="true"
         android:scrollbars="none"
         android:id="@+id/MyScrollview"
@@ -79,7 +79,7 @@
 
             </LinearLayout>
 
-    </com.example.dddkj.ywtx.Widget.MyScrollview>
+    </com.example.dddkj.ywtx.Widget.MySuspensionScrollview>
     <LinearLayout
         android:id="@+id/search01"
         android:layout_width="match_parent"

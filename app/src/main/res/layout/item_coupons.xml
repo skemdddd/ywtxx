@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/shop_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/imageView9"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/linearLayout2" android:layout_alignParentTop="true"
+                      android:layout_centerHorizontal="true" android:layout_marginTop="11dp">
+
+            <TextView
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:text="￥"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12"/>
+            <TextView
+                android:id="@+id/jprice_tv"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="5.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/mprice_tv"
+            android:textColor="@color/white"
+            tools:text="本店滿259使用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView9" android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"/>
+
+    </RelativeLayout>
+</LinearLayout>

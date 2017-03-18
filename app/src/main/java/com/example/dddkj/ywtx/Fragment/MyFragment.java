@@ -73,4 +73,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
     public void onClick(View view) {
 
     }
+
+    @Override
+    public View getScrollableView() {
+        return null;
+    }
 }

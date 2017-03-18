@@ -82,12 +82,16 @@ public class ClassifyFragment extends BaseFragment {
                             public void onSuccess(String s, Call call, Response response) {
                                 final Gson gson = new GsonBuilder().registerTypeAdapterFactory(new NullStringToEmptyAdapterFactory<>()).create();
                                 ClassifySkip classifySkip =gson.fromJson(s,ClassifySkip.class);
-                                classifyRigetAdapter.setNewData(getSampleData(classifySkip));
+                                if(classifySkip.getCode().equals("400") ){
+                                    classifyRigetAdapter.setEmptyView(R.layout.progress_empty_view, (ViewGroup) mRigetClassifyList.getParent());
+                                }else {
+                                    classifyRigetAdapter.setNewData(getSampleData(classifySkip));
+                                }
+
                             }
                             @Override
                             public void onBefore(BaseRequest request) {
                                 super.onBefore(request);
-
                                 if(classifyRigetAdapter.getData().size()== 0){
                                     classifyRigetAdapter.setEmptyView(R.layout.progress_loading_view, (ViewGroup) mRigetClassifyList.getParent());
 
@@ -108,9 +112,13 @@ public class ClassifyFragment extends BaseFragment {
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent(mRigetClassifyList.getContext(), ClassifySortActivity.class);
                 MyClassifySection myClassifySection = (MyClassifySection) adapter.getData().get(position);
-                intent.putExtra("id",myClassifySection.t.getCatsId());
-                intent.putExtra("title",myClassifySection.t.getCatsName());
-                startActivity(intent);
+                if(!myClassifySection.isHeader){
+                    intent.putExtra("id",myClassifySection.t.getCatsId());
+                    intent.putExtra("title",myClassifySection.t.getCatsName());
+                    startActivity(intent);
+
+                }
+
 
             }
         });
@@ -123,7 +131,6 @@ public class ClassifyFragment extends BaseFragment {
         SubmitRight();
     }
     public void SubmitRight(){
-
         OkGo.post(RequesURL.CLASSIFYHOMETWO)
                 .tag(this)
                 .params("typeid","334")
@@ -133,6 +140,11 @@ public class ClassifyFragment extends BaseFragment {
                         final Gson gson = new GsonBuilder().registerTypeAdapterFactory(new NullStringToEmptyAdapterFactory<>()).create();
                         ClassifySkip classifySkip =gson.fromJson(s,ClassifySkip.class);
                         classifyRigetAdapter.setNewData(getSampleData(classifySkip));
+                        if(classifySkip.getCode().equals("400") ){
+                            classifyRigetAdapter.setNewData(null);
+                        }else {
+                            classifyRigetAdapter.setNewData(getSampleData(classifySkip));
+                        }
                     }
 
 
@@ -157,17 +169,26 @@ public class ClassifyFragment extends BaseFragment {
                 });
     }
     public  List<MyClassifySection> getSampleData(ClassifySkip classifySkip) {
-            List<MyClassifySection> list = new ArrayList<>();
-            for (int i = 0; i < classifySkip.getData().size(); i++) {
+        List<MyClassifySection> list = new ArrayList<>();
+        try {
+            for (int i = 0; i < classifySkip.getData().size() ; i++) {
+                Logger.i("数量  "+ classifySkip.getData().size());
                 list.add(new MyClassifySection(true, classifySkip.getData().get(i).getCatsName()));
                 for (int k = 0; k < classifySkip.getData().get(i).getData().size(); k++) {
                     list.add(new MyClassifySection(classifySkip.getData().get(i).getData().get(k)));
                 }
             }
+        }catch (Exception e){
+
+           return list;
+        }
 
         return list;
     }
 
 
-
+    @Override
+    public View getScrollableView() {
+        return null;
+    }
 }

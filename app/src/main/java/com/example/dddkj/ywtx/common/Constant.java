@@ -9,6 +9,15 @@ import android.support.design.widget.TabLayout;
  */
 
 public class Constant {
+    public static String getShopid() {
+        return shopid;
+    }
+
+    public static void setShopid(String shopid) {
+        Constant.shopid = shopid;
+    }
+
+    public static String shopid;
     public static final String SALESVOLUME = "warnStock";
     public static final String NEWGOOGS = "time";
     public static final String HIGHPRICE = "highPrice";
@@ -23,4 +32,5 @@ public class Constant {
         tab.addTab(tab.newTab().setText("价格"));
 
     }
+
 }

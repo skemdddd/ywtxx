@@ -8,7 +8,6 @@ package com.example.dddkj.ywtx.Entity;
 
 public class ThirdGoogsData {
     private String gId;
-
     private String gName;
 
     private String price;
@@ -18,6 +17,8 @@ public class ThirdGoogsData {
     private String picurl;
 
     private String orderNum;
+
+
 
     public void setGId(String gId){
         this.gId = gId;

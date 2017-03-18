@@ -201,6 +201,7 @@ public class AllCommentsActivity extends BaseActivity implements RadioGroup.OnCh
 
         RadioButton picture = (RadioButton) findViewById(R.id.picture);
         picture.setText("图片" + "(" + allComments.getData().getStnum() + ")");
+
         RadioGroup mRadioGroup = (RadioGroup) findViewById(R.id.evalute);
         mRadioGroup.setOnCheckedChangeListener(listener);
 
@@ -227,6 +228,9 @@ public class AllCommentsActivity extends BaseActivity implements RadioGroup.OnCh
             case R.id.all_comments_tv:
 //                中评
                 Submit(7);
+                break;
+            case R.id.picture:
+                Submit(9);
                 break;
 
 

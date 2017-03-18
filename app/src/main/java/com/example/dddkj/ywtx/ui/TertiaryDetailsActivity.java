@@ -18,7 +18,7 @@ import com.example.dddkj.ywtx.Entity.ThirdGoogs;
 import com.example.dddkj.ywtx.Entity.ThirdGoogsData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
-import com.example.dddkj.ywtx.Widget.MyScrollview;
+import com.example.dddkj.ywtx.Widget.MySuspensionScrollview;
 import com.example.dddkj.ywtx.Widget.NullStringToEmptyAdapterFactory;
 import com.example.dddkj.ywtx.Widget.Titlebar;
 import com.example.dddkj.ywtx.common.Constant;
@@ -43,7 +43,7 @@ import okhttp3.Response;
  * 创建时间：2017/3/3 9:48
  */
 
-public class TertiaryDetailsActivity extends BaseActivity implements MyScrollview.OnScrollListener {
+public class TertiaryDetailsActivity extends BaseActivity implements MySuspensionScrollview.OnScrollListener {
     @BindView(R.id.thirdcategory)
     TabLayout mThirdCategoryTab;
     @BindView(R.id.pricelist)
@@ -55,7 +55,7 @@ public class TertiaryDetailsActivity extends BaseActivity implements MyScrollvie
     @BindView(R.id.progressrv)
     ProgressActivity mProgressActivityrv;
     @BindView(R.id.MyScrollview)
-    MyScrollview mMyScrollview;
+    MySuspensionScrollview mMyScrollview;
     @BindView(R.id.titlebar)
     Titlebar mTitlebar;
     @BindView(R.id.search01)

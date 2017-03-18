@@ -363,12 +363,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="23dp">
                 <ImageButton
+                    android:id="@+id/enterstore_ibtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:src="@mipmap/enter_shop"/>
                 <ImageButton
+                    android:id="@+id/allshop_ibtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

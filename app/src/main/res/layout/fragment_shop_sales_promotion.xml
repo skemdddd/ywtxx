@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="13.5dp"
+        android:background="@color/loginBackground">
+    </View>
+    <com.example.dddkj.ywtx.utils.ProgressActivity
+        android:id="@+id/ProgressActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/shopSales_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </com.example.dddkj.ywtx.utils.ProgressActivity>
+
+</LinearLayout>
