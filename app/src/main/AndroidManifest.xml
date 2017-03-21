@@ -32,7 +32,6 @@
         </activity>
         <activity
             android:label="商品详情"
-
             android:name=".ui.MerchandiseNewsActivity">
 
         </activity>
@@ -55,6 +54,20 @@
         <activity
             android:label="全部商品"
             android:name=".ui.AllShopActivity">
+        </activity>
+        <activity
+            android:label="店铺全部商品"
+           android:name=".ui.ShopAllGoodsActivity">
+
+        </activity>
+        <activity
+            android:label="店铺搜索"
+            android:name=".ui.SearchGoodsActivity">
+
+        </activity>
+        <activity
+            android:label="店铺搜索列表"
+            android:name=".ui.SearchGoodsListActivity">
 
         </activity>
 

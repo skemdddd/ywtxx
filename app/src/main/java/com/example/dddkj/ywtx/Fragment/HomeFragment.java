@@ -174,7 +174,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         HomeRecommendRoot recommendRoot = gson.fromJson(s, HomeRecommendRoot.class);
-                        Glide.with(getContext())
+                        Glide.with(MyApplication.getInstance())
                                 .load(RequesURL.URL + recommendRoot.getMessage())
                                 .asBitmap()
                                 .into(new SimpleTarget<Bitmap>() {
@@ -256,7 +256,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         views.add(mFAd_Image);
         for (int i = 0; i < advert.getData().getTypeBottomAds().size(); i++) {
             final ImageView acc = views.get(i);
-            Glide.with(getContext())
+            Glide.with(MyApplication.getInstance())
                     .load(RequesURL.URL + advert.getData().getTypeBottomAds().get(i).getAdsFile())
                     .asBitmap()
                     .into(new SimpleTarget<Bitmap>() {

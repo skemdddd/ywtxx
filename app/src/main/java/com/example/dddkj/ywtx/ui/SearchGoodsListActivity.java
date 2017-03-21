@@ -28,19 +28,19 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
-
 /**
  * 项目名称：亿我同行
- * <分类排序>
- * 创建时间：2017/3/6 14:57
+ * <p>
+ * 创建时间：2017/3/21 10:17
  */
 
-public class ClassifySortActivity extends BaseActivity implements MySuspensionScrollview.OnScrollListener,TabLayout.OnTabSelectedListener{
+public class SearchGoodsListActivity  extends BaseActivity implements MySuspensionScrollview.OnScrollListener,TabLayout.OnTabSelectedListener{
     @BindView(R.id.pricelist)
     TabLayout mPricelistTab;
     @BindView(R.id.goods)
@@ -80,13 +80,12 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
 
             @Override
             public void Onseek() {
-                Intent intent = new Intent(ClassifySortActivity.this,SearchGoodsActivity.class);
-                startActivity(intent);
+                MyApplication.getInstance().finishActivity(SearchGoodsListActivity.this);
             }
 
             @Override
             public void Onback() {
-                MyApplication.getInstance().finishActivity(ClassifySortActivity.this);
+                MyApplication.getInstance().finishActivity(SearchGoodsListActivity.this);
             }
         });
 
@@ -104,7 +103,7 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
         mGoodsList.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(ClassifySortActivity.this, MerchandiseNewsActivity.class);
+                Intent intent = new Intent(SearchGoodsListActivity.this, MerchandiseNewsActivity.class);
                 ThirdGoogsData thirdGoogsData = (ThirdGoogsData)adapter.getData().get(position);
                 intent.putExtra("goodsid",thirdGoogsData.getGId());
                 startActivity(intent);
@@ -124,9 +123,10 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
 
     public  void  Submit(){
         final Gson gson = new Gson();
-        OkGo.post(RequesURL.CLASSIFICATIONGOODS)
+        OkGo.post(RequesURL.PLATFORMGOODSSTORE)
                 .tag(this)
-                .params("catsid", intent.getStringExtra("id"))
+                .params("shopid", intent.getStringExtra("shopid"))
+                .params("key",intent.getStringExtra("key"))
                 .cacheKey("cacheKey")
                 .cacheMode(CacheMode.DEFAULT)
                 .execute(new StringCallback() {
@@ -139,6 +139,8 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
                     @Override
                     public void onAfter(String s, Exception e) {
                         super.onAfter(s, e);
+                        Logger.i("shopid  "+ intent.getStringExtra("shopid"));
+                        Logger.i("key   "+ intent.getStringExtra("key"));
                         mProgressActivityrv.showContent();
                         ThirdGoogs thirdGoogs = gson.fromJson(s, ThirdGoogs.class);
                         mTertiaryDetailsAdapter.setNewData(thirdGoogs.getData());
@@ -146,7 +148,7 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
                             mProgressActivityrv.showEmpty(getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容，先去逛逛别的吧", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    MyApplication.getInstance().finishActivity(ClassifySortActivity.this);
+                                    MyApplication.getInstance().finishActivity(SearchGoodsListActivity.this);
                                 }
                             });
 
@@ -169,10 +171,11 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
      */
     public void SubmitCommodityOrdering( TabLayout.Tab tab, String type) {
         final Gson gson = new Gson();
-        OkGo.post(RequesURL.CLASSIFICATIONGOODS)
+        OkGo.post(RequesURL.PLATFORMGOODSSTORE)
                 .tag(this)
-                .params("catsid",intent.getStringExtra("id") )
+                .params("shopid",intent.getStringExtra("shopid") )
                 .params("flag", type)
+                .params("key",intent.getStringExtra("key"))
                 .cacheKey("cacheKey")
                 .cacheMode(CacheMode.DEFAULT)
                 .execute(new StringCallback() {
@@ -192,7 +195,7 @@ public class ClassifySortActivity extends BaseActivity implements MySuspensionSc
                             mProgressActivityrv.showEmpty(getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容，先去逛逛别的吧", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    MyApplication.getInstance().finishActivity(ClassifySortActivity.this);
+                                    MyApplication.getInstance().finishActivity(SearchGoodsListActivity.this);
                                 }
                             });
 

@@ -6,8 +6,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
-
 /**
  * 项目名称：亿我同行
  * <p>
@@ -56,7 +54,6 @@ public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
             //由于每行都只有3个，所以第一个都是2的倍数，把左边距设为0
 
             if (parent.getChildLayoutPosition(view) %2==1 ) {
-                Logger.i("数量   "+parent.getChildLayoutPosition(view));
                 outRect.left = 0;
             }
         }else{

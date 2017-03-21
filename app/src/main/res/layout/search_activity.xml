@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark" >
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+        <EditText
+            android:id="@+id/search_edt"
+            android:layout_width="230dp"
+            android:layout_height="32dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/titleText"
-            android:textSize="18sp" tools:text="登录"/>
+            android:background="@drawable/edit_radius"
+            android:drawableLeft="@mipmap/seach_gray"
+            android:drawablePadding="10dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:hint="搜索店内商品"
+            android:maxLength="10" android:textColor="@color/black"
+            android:textSize="13sp"/>
         <ImageView
             android:id="@+id/title_back"
             android:layout_width="wrap_content"
@@ -24,31 +31,36 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="9dp" android:layout_marginStart="9dp"
-            android:padding="13dp" android:src="@mipmap/signin_back"/>
-        <ImageView
-            android:id="@+id/iminage"
+            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
+            android:padding="13dp"
+            android:src="@mipmap/signin_back"/>
+        <TextView
+            android:id="@+id/search_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="20dp"
-            android:padding="6dp"
-            android:src="@mipmap/more"/>
-        <ImageView
-            android:id="@+id/seekimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="30dp"
-            android:padding="8dp"
-            android:src="@mipmap/classification"/>
+            android:layout_alignParentEnd="true" android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/title_back" android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp" android:padding="13dp"
+            android:text="搜索" android:textColor="@color/white"
+            android:textSize="15sp"/>
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="23dp"
+        android:text="热门搜索词"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+    <GridView
+        android:id="@+id/hot_GV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:numColumns="3">
 
+    </GridView>
 </LinearLayout>

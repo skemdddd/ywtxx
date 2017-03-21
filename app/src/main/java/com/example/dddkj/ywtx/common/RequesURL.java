@@ -29,15 +29,20 @@ public class RequesURL {
     public static final String CLASSIFICATIONGOODS = URL + INDEX + "m=Customer&c=Goods&a=goodsList";
     //    商品详情
     public static final String GOODSDETAILS = URL + INDEX + "m=Customer&c=Goods&a=goodsContent";
-    public static final String GOODSDETAILSWEB= URL + INDEX + "m=Customer&c=Goods&a=goodsImgText";
-    public static final String GOODSDETAILSWEBARRR =URL + INDEX + "m=Customer&c=Goods&a=goodsAttr";
-//    评论
-    public static final String AllCOMMENTS =URL + INDEX + "m=Customer&c=GoodsAppraises&a=appraisesList";
-//    店铺详情
-    public static final String SHOPFRONTPAGE =URL + INDEX + "m=Customer&c=Shops&a=index";
+    public static final String GOODSDETAILSWEB = URL + INDEX + "m=Customer&c=Goods&a=goodsImgText";
+    public static final String GOODSDETAILSWEBARRR = URL + INDEX + "m=Customer&c=Goods&a=goodsAttr";
+    //    评论
+    public static final String AllCOMMENTS = URL + INDEX + "m=Customer&c=GoodsAppraises&a=appraisesList";
+    //    店铺详情
+    public static final String SHOPFRONTPAGE = URL + INDEX + "m=Customer&c=Shops&a=index";
 
-    public static  final String SHOPGOODSLIST =URL + INDEX + "m=Customer&c=Shops&a=shopGoodsList";
-//    店铺简介
-public static  final String SHOPABOUT =URL + INDEX + "m=Customer&c=shops&a=shopAbout";
-
+    public static final String SHOPGOODSLIST = URL + INDEX + "m=Customer&c=Shops&a=shopGoodsList";
+    //    店铺简介
+    public static final String SHOPABOUT = URL + INDEX + "m=Customer&c=shops&a=shopAbout";
+//    店铺分类
+    public static final String STORECLASSIFICATION= URL + INDEX + "m=Customer&c=ShopsCats&a=shopCats";
+//   热门搜索词
+    public static final String POPULARSEARCHWORDS=URL + INDEX + "m=Customer&c=Search&a=hotSearch";
+//    搜索列表
+    public static final String PLATFORMGOODSSTORE=URL + INDEX + "m=Customer&c=Search&a=goodsSearch";
 }

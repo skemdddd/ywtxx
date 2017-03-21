@@ -60,6 +60,7 @@ public class AllShopActivity  extends BaseActivity{
         mTertiaryDetailsAdapter = new TertiaryDetailsAdapter(R.layout.item_home_popularity, null);
         AllGoodsList.setAdapter(mTertiaryDetailsAdapter);
         AllGoodsList.addItemDecoration(new VerticalSpaceItemDecoration(20,0));
+        mTitlebar.setText(mIntent.getStringExtra("title"));
         Constant.setPricelistTab(mTabLayout);
         Submitgoods("");
 
@@ -116,7 +117,8 @@ public class AllShopActivity  extends BaseActivity{
 
             @Override
             public void Onseek() {
-
+                Intent intent = new Intent(AllShopActivity.this,SearchGoodsActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -131,6 +133,7 @@ public class AllShopActivity  extends BaseActivity{
                 .tag(this)
                 .params("shopid",mIntent.getStringExtra("shopid"))
                 .params("flag",type)
+                .params("catsid",mIntent.getStringExtra("catsid"))
                 .cacheKey("cacheKey")
                 .cacheMode(CacheMode.DEFAULT)
                 .execute(new StringCallback() {

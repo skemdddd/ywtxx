@@ -69,6 +69,7 @@
         android:id="@+id/search01"
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:orientation="vertical">
+        android:orientation="vertical" android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
     </LinearLayout>
 </RelativeLayout>

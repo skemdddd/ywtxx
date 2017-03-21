@@ -48,4 +48,9 @@
         <item name="banner_tipTextColor">@android:color/white</item>
         <!-- 加载网络数据时覆盖在BGABanner最上层的占位图 -->
     </style>
+
+    <style name="AnimTools" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_in</item>
+        <item name="android:windowExitAnimation">@anim/push_out</item>
+    </style>
 </resources>

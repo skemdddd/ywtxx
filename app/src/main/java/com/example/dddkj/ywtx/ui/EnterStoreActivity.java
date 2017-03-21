@@ -3,10 +3,13 @@ package com.example.dddkj.ywtx.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +24,7 @@ import com.example.dddkj.ywtx.Fragment.ShopAllGoodsFragment;
 import com.example.dddkj.ywtx.Fragment.ShopNewStoresFragment;
 import com.example.dddkj.ywtx.Fragment.ShopPageFragment;
 import com.example.dddkj.ywtx.Fragment.ShopSalesPromotionFragment;
+import com.example.dddkj.ywtx.MainActivity;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.common.Constant;
@@ -47,7 +51,14 @@ import okhttp3.Response;
  * 创建时间：2017/3/15 14:03
  */
 
-public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPageChangeListener{
+public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
+
+    @BindView(R.id.seekimage)
+    ImageView seekimage;
+    @BindView(R.id.iminage)
+    ImageView iminage;
+    @BindView(R.id.search)
+    TextView search;
     Intent mIntent;
     @BindView(R.id.title_back)
     ImageView title_back;
@@ -77,6 +88,20 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
     List<BaseFragment> list_fragment;
     ShopNewStoresFragment mShopNewStoresFragment;
     ShopSalesPromotionFragment mShopSalesPromotionFragment;
+    PopupWindow popWindow;
+    Intent intentAbout;
+
+
+    public String getHotSearch() {
+        return mHotSearch;
+    }
+
+    public void setHotSearch(String hotSearch) {
+        mHotSearch = hotSearch;
+    }
+
+    protected String mHotSearch;
+
 
 
     @Override
@@ -91,14 +116,16 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
         initView();
         about_store_rl.setOnClickListener(this);
         title_back.setOnClickListener(this);
+        seekimage.setOnClickListener(this);
+        iminage.setOnClickListener(this);
+        search.setOnClickListener(this);
     }
-
     public void initView() {
 
 //        初始化Fragment
         list_fragment = new ArrayList<>();
         mShopPageFragment = new ShopPageFragment();
-        mShopAllGoodsFragment =new ShopAllGoodsFragment();
+        mShopAllGoodsFragment = new ShopAllGoodsFragment();
         mShopNewStoresFragment = new ShopNewStoresFragment();
         mShopSalesPromotionFragment = new ShopSalesPromotionFragment();
 
@@ -113,13 +140,12 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
         list_title.add("新品上架");
         list_title.add("店铺热销");
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        setPricelistTab(mTabLayout,EnterStoreActivity.this);
+        setPricelistTab(mTabLayout, EnterStoreActivity.this);
         mEnterStoreAdapter = new EnterStoreAdapter(this.getSupportFragmentManager(), list_fragment, list_title);
         mViewPager.setAdapter(mEnterStoreAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(this);
         mScrollableLayout.getHelper().setCurrentScrollableContainer(mShopPageFragment);
-
 
 
     }
@@ -171,7 +197,6 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
                         mShopPageFragment.setThirdGoogsDatas(shopPage.getData().getBest());
 
 
-
                     }
 
 
@@ -182,6 +207,7 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
 
                     }
                 });
+
     }
 
     @Override
@@ -191,17 +217,47 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
 
     @Override
     public void onClick(View v) {
-      switch (v.getId()){
-          case R.id.about_store_rl:
-              Intent intent = new Intent(this,AboutStoreActivity.class);
-              intent.putExtra("shopid",mIntent.getStringExtra("shopid"));
-              startActivity(intent);
-              break;
-          case R.id.title_back:
-              MyApplication.getInstance().finishActivity(EnterStoreActivity.this);
-      }
-    }
+        switch (v.getId()) {
+            case R.id.about_store_rl:
+                intentAbout = new Intent(this, AboutStoreActivity.class);
+                intentAbout.putExtra("shopid", mIntent.getStringExtra("shopid"));
+                startActivity(intentAbout);
+                break;
+            case R.id.title_back:
+                MyApplication.getInstance().finishActivity(EnterStoreActivity.this);
+                break;
+            case R.id.iminage:
+                ShowPopWinShare(this);
+                break;
+            case R.id.home_ll:
+                popWindow.dismiss();
+                Intent intent1 = new Intent(this, MainActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent1);
+                break;
+            case R.id.aboutstore_ll:
+                popWindow.dismiss();
+                intentAbout = new Intent(this, AboutStoreActivity.class);
+                intentAbout.putExtra("shopid", mIntent.getStringExtra("shopid"));
+                startActivity(intentAbout);
+                break;
+            case R.id.seekimage:
+                Intent intentAll = new Intent(this, ShopAllGoodsActivity.class);
+                intentAll.putExtra("shopid", mIntent.getStringExtra("shopid"));
+                startActivity(intentAll);
+                break;
+            case R.id.search:
+                Intent intentSearch =new Intent(this,SearchGoodsActivity.class);
+                intentSearch.putExtra("shopid", mIntent.getStringExtra("shopid"));
+                startActivity(intentSearch);
+                break;
 
+
+
+
+        }
+    }
 
 
     /**
@@ -230,6 +286,27 @@ public class EnterStoreActivity extends BaseActivity  implements ViewPager.OnPag
 
     @Override
     public void onPageScrollStateChanged(int i) {
+
+    }
+
+    public void ShowPopWinShare(View.OnClickListener paramOnClickListener) {
+        View view = getLayoutInflater().inflate(R.layout.popwin_more_share, null);
+        popWindow = new PopupWindow(view, ViewPager.LayoutParams.WRAP_CONTENT, ViewPager.LayoutParams.WRAP_CONTENT, true);
+        popWindow.setContentView(view);
+        LinearLayout information = (LinearLayout) view.findViewById(R.id.information_ll);
+        LinearLayout home = (LinearLayout) view.findViewById(R.id.home_ll);
+        LinearLayout share = (LinearLayout) view.findViewById(R.id.share_ll);
+        LinearLayout aboutstore = (LinearLayout) view.findViewById(R.id.aboutstore_ll);
+        information.setOnClickListener(paramOnClickListener);
+        home.setOnClickListener(paramOnClickListener);
+        share.setOnClickListener(paramOnClickListener);
+        aboutstore.setOnClickListener(paramOnClickListener);
+        //设置显示隐藏动画
+        popWindow.setAnimationStyle(R.style.AnimTools);
+        //设置背景透明
+        popWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popWindow.showAsDropDown(seekimage, 0, 0);
+
 
     }
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -21,6 +22,7 @@ import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.Widget.NullStringToEmptyAdapterFactory;
 import com.example.dddkj.ywtx.common.RequesURL;
 import com.example.dddkj.ywtx.ui.ClassifySortActivity;
+import com.example.dddkj.ywtx.ui.SearchGoodsActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.lzy.okgo.OkGo;
@@ -50,6 +52,8 @@ public class ClassifyFragment extends BaseFragment {
     @BindView(R.id.rightClassify_rv)
     RecyclerView mRigetClassifyList;
     ClassifyRigetAdapter classifyRigetAdapter;
+    @BindView(R.id.search)
+    TextView search;
 
 
 
@@ -64,10 +68,19 @@ public class ClassifyFragment extends BaseFragment {
         mRigetClassifyList.setHasFixedSize(true);
         classifyRigetAdapter =new ClassifyRigetAdapter(R.layout.item_classify_right,R.layout.item_classify_heard,null);
         mRigetClassifyList.setAdapter(classifyRigetAdapter);
+
+
     }
     @Override
     protected void initListener() {
         initAdapter();
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSearch =new Intent(getActivity(),SearchGoodsActivity.class);
+                startActivity(intentSearch);
+            }
+        });
 //        左侧
         mLiftClassifyList.addOnItemTouchListener(new OnItemClickListener() {
             @Override

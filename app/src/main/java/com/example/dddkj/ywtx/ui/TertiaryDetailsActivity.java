@@ -88,7 +88,8 @@ public class TertiaryDetailsActivity extends BaseActivity implements MySuspensio
 
             @Override
             public void Onseek() {
-
+                Intent intent = new Intent(TertiaryDetailsActivity.this,SearchGoodsActivity.class);
+                startActivity(intent);
             }
 
             @Override

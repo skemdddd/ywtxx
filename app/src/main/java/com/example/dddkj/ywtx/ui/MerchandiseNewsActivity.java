@@ -35,7 +35,6 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
 import com.lzy.widget.VerticalSlide;
 import com.lzy.widget.vertical.VerticalScrollView;
-import com.orhanobut.logger.Logger;
 
 import org.apache.http.util.EncodingUtils;
 
@@ -58,6 +57,8 @@ import static com.example.dddkj.ywtx.R.id.webView;
 
 public class MerchandiseNewsActivity extends BaseActivity {
     Intent mIntent;
+    @BindView(R.id.iv_good_detai_collect_select)
+    ImageView iv_good_detai_collect_select;
     @BindView(R.id.titlebar)
     Titlebar mTitlebar;
     @BindView(R.id.banner)
@@ -289,11 +290,22 @@ public class MerchandiseNewsActivity extends BaseActivity {
                                 startActivity(intentStore);
                             }
                         });
+                        iv_good_detai_collect_select.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intentStore = new Intent(MerchandiseNewsActivity.this,EnterStoreActivity.class);
+                                intentStore.putExtra("shopid",googsNews.getData().getSId());
+                                startActivity(intentStore);
+                            }
+                        });
+//                        全部商品
                         allshop_ibtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 Intent intentStore = new Intent(MerchandiseNewsActivity.this,AllShopActivity.class);
                                 intentStore.putExtra("shopid",googsNews.getData().getSId());
+                                intentStore.putExtra("catsid","");
+                                intentStore.putExtra("title","全部商品");
                                 startActivity(intentStore);
                             }
                         });
@@ -309,7 +321,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        Logger.json(s);
+
 
 
                     }
