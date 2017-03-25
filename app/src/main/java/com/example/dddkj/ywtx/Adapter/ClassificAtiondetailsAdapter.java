@@ -1,6 +1,8 @@
 package com.example.dddkj.ywtx.Adapter;
 
 import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -20,8 +22,10 @@ import java.util.List;
  */
 
 public class ClassificAtiondetailsAdapter extends BaseQuickAdapter<SecondaryRecommendationData,BaseViewHolder> {
+    private String type ;
     public ClassificAtiondetailsAdapter(int layoutResId, List<SecondaryRecommendationData> data) {
         super(layoutResId, data);
+
     }
 
     @Override
@@ -30,15 +34,15 @@ public class ClassificAtiondetailsAdapter extends BaseQuickAdapter<SecondaryReco
         helper.setText(R.id.money_text,"￥"+item.getPrice());
         helper.setText(R.id.numberPeople_text,item.getOrderNum()+"人付款");
         helper.setText(R.id.freight_text,item.getIsPostage());
-
-
+        final ImageView imageView = helper.getView(R.id.picture_img);
+        final ViewGroup.LayoutParams para = imageView.getLayoutParams();
         Glide.with(mContext)
                 .load(RequesURL.URL+item.getPicurl())
                 .asBitmap()
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        helper.setImageBitmap(R.id.picture_img,resource);
+                            helper.setImageBitmap(R.id.picture_img,resource);
                     }
                 });
     }

@@ -1,5 +1,6 @@
 package com.example.dddkj.ywtx.Fragment;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.dddkj.ywtx.Base.BaseFragment;
 import com.example.dddkj.ywtx.R;
+import com.example.dddkj.ywtx.ui.DeliveryAddrssActivity;
+import com.example.dddkj.ywtx.ui.MyCollection;
 
 import butterknife.BindView;
 
@@ -52,6 +55,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
 //    售后
     @BindView(R.id.afterSale_tv)
     TextView mAfterSale;
+//    收获地址
+    @BindView(R.id.personal_address_rl)
+    RelativeLayout personal_address_rl;
 
 
     @Override
@@ -61,7 +67,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
 
     @Override
     protected void initListener() {
-
+        personal_address_rl.setOnClickListener(this);
+        mCollect.setOnClickListener(this);
     }
 
     @Override
@@ -71,7 +78,17 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.personal_address_rl:
+                Intent intent = new Intent(getActivity(), DeliveryAddrssActivity.class);
+                getActivity().startActivity(intent);
+                break;
+            case R.id.collect_rlyt:
+                Intent intent1 = new Intent(getActivity(), MyCollection.class);
+                getActivity().startActivity(intent1);
+                break;
 
+        }
     }
 
     @Override

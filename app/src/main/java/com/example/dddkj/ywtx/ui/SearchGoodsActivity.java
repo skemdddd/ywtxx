@@ -58,7 +58,7 @@ public class SearchGoodsActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SearchGoodsActivity.this, SearchGoodsListActivity.class);
                 intent.putExtra("key", search_edt.getText().toString());
-                intent.putExtra("shopid", mIntent.getStringArrayExtra("shopid"));
+                intent.putExtra("shopid", mIntent.getStringExtra("shopid"));
                 intent.putExtra("title", "商品列表");
                 startActivity(intent);
             }
@@ -96,7 +96,7 @@ public class SearchGoodsActivity extends BaseActivity {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 Intent intent = new Intent(SearchGoodsActivity.this, SearchGoodsListActivity.class);
                                 intent.putExtra("key", hotSearch.getData().getKey().get(position));
-                                intent.putExtra("shopid",mIntent.getStringArrayExtra("shopid"));
+                                intent.putExtra("shopid",mIntent.getStringExtra("shopid"));
                                 intent.putExtra("title", "商品列表");
                                 startActivity(intent);
                             }

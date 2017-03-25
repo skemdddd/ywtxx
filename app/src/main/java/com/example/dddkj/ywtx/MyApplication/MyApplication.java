@@ -17,6 +17,17 @@ public class MyApplication extends Application {
     private List<Activity> activities = new ArrayList<Activity>();
     //记录需要一次性关闭的页面
     private List<Activity> activitys = new ArrayList<Activity>();
+
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    private String userid;
     @Override
     public void onCreate() {
         super.onCreate();

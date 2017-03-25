@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/discountCoupon_rlyt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:background="@color/colorPrimaryDark"
+        android:clickable="true"
+    >
+
+        <ImageView
+            android:padding="10dp"
+            android:id="@+id/back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:src="@mipmap/signin_back"/>
+        <TextView
+
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/back_img"
+            android:layout_toRightOf="@+id/back_img"
+            android:text="选择地区"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/hometab_context"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,10 +1,15 @@
 package com.example.dddkj.ywtx.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -59,6 +64,8 @@ public class AboutStoreActivity extends BaseActivity {
     ImageView title_back;
     @BindView(R.id.ProgressActivity)
     ProgressActivity mProgressActivity;
+    @BindView(R.id.phone_rlyt)
+    RelativeLayout phone_rlyt;
 
     @Override
     protected void loadViewLayout() {
@@ -119,6 +126,24 @@ public class AboutStoreActivity extends BaseActivity {
                         content.setText(shopAbout.getData().getContent());
                         ctime.setText(shopAbout.getData().getCtime());
                         area_tv.setText(shopAbout.getData().getArea());
+                        phone_rlyt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + shopAbout.getData().getTel()));
+                                if (ActivityCompat.checkSelfPermission(AboutStoreActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    // TODO: Consider calling
+                                    //    ActivityCompat#requestPermissions
+                                    // here to request the missing permissions, and then overriding
+                                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                    //                                          int[] grantResults)
+                                    // to handle the case where the user grants the permission. See the documentation
+                                    // for ActivityCompat#requestPermissions for more details.
+                                    return;
+                                }
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        });
                     }
 
 

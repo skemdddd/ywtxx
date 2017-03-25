@@ -89,7 +89,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#10000000"/>
+                    android:background="#30000000"/>
                 <ImageView
                     android:id="@+id/shoplogo_iv"
                     android:layout_width="66.5dp"

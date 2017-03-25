@@ -14,6 +14,7 @@ import com.example.dddkj.ywtx.Adapter.HomeClassifyGridViewAdapter;
 import com.example.dddkj.ywtx.Adapter.HomeClassifyViewPagerAdapter;
 import com.example.dddkj.ywtx.Entity.HomeClassifyRoot;
 import com.example.dddkj.ywtx.MainActivity;
+import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.ui.ClassificAtiondetailsActivity;
 import com.orhanobut.logger.Logger;
@@ -60,7 +61,10 @@ public class HomeFragmentClassify {
 
     }
     public void setClassify(){
-        inflater = LayoutInflater.from(mContext);
+        if(mView == null){
+            return;
+        }
+        inflater = LayoutInflater.from(MyApplication.getInstance());
         mPager = (ViewPager) mView.findViewById(R.id.viewpager);
         mLlDot = (LinearLayout) mView.findViewById(R.id.ll_dot);
         //总的页数=总数/每页数量，并取整
@@ -99,9 +103,6 @@ public class HomeFragmentClassify {
             setOvalLayout();
             mLlDot.setVisibility(View.VISIBLE);
         }
-
-
-
 
     }
 

@@ -39,10 +39,25 @@ public class RequesURL {
     public static final String SHOPGOODSLIST = URL + INDEX + "m=Customer&c=Shops&a=shopGoodsList";
     //    店铺简介
     public static final String SHOPABOUT = URL + INDEX + "m=Customer&c=shops&a=shopAbout";
-//    店铺分类
-    public static final String STORECLASSIFICATION= URL + INDEX + "m=Customer&c=ShopsCats&a=shopCats";
-//   热门搜索词
-    public static final String POPULARSEARCHWORDS=URL + INDEX + "m=Customer&c=Search&a=hotSearch";
-//    搜索列表
-    public static final String PLATFORMGOODSSTORE=URL + INDEX + "m=Customer&c=Search&a=goodsSearch";
+    //    店铺分类
+    public static final String STORECLASSIFICATION = URL + INDEX + "m=Customer&c=ShopsCats&a=shopCats";
+    //   热门搜索词
+    public static final String POPULARSEARCHWORDS = URL + INDEX + "m=Customer&c=Search&a=hotSearch";
+    //    搜索列表
+    public static final String PLATFORMGOODSSTORE = URL + INDEX + "m=Customer&c=Search&a=goodsSearch";
+    //    收货地址管理
+    public static final String SHIPPINGADDRESSMANAGEMENT = URL + INDEX + "m=Customer&c=UserAddress&a=addressList";
+    //    修改收获地址状态
+    public static final String SHIPPINGADDRESSSTATE = URL + INDEX + "m=Customer&c=UserAddress&a=isState";
+    //    省份信息
+    public static final String REGIONALINFORMATION = URL + INDEX + "m=Customer&c=Areas&a=provinceList";
+    //    城市地区
+    public static final String AREASLIST = URL + INDEX + "m=Customer&c=Areas&a=areasList";
+    //    添加、修改收货地址
+    public static final String ARSAVE = URL + INDEX + "m=Customer&c=UserAddress&a=arSave";
+    //    删除收获地址
+    public static final String ARDELETE = URL + INDEX + "m=Customer&c=UserAddress&a=arDelete";
+    //    收藏列表
+    public static final String FAVORITESLIST = URL + INDEX + "m=Customer&c=Favorites&a=favoritesList";
+
 }

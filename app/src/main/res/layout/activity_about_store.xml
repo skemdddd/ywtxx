@@ -29,6 +29,7 @@
             android:padding="13dp" android:src="@mipmap/signin_back"/>
 
     </RelativeLayout>
+
     <com.example.dddkj.ywtx.utils.ProgressActivity
         android:id="@+id/ProgressActivity"
         android:layout_width="match_parent"
@@ -258,7 +259,7 @@
                     android:src="@mipmap/introduce_news"/>
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/collect_rlyt"
+                android:id="@+id/phone_rlyt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="1dp"

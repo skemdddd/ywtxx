@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.dddkj.ywtx.Adapter.StoreCouponAdapter;
 import com.example.dddkj.ywtx.Adapter.TertiaryDetailsAdapter;
 import com.example.dddkj.ywtx.Base.BaseFragment;
@@ -17,6 +16,7 @@ import com.example.dddkj.ywtx.Entity.ThirdGoogsData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.ui.MerchandiseNewsActivity;
+import com.example.dddkj.ywtx.utils.T;
 import com.example.dddkj.ywtx.utils.VerticalSpaceItemDecoration;
 import com.scrollablelayout.ScrollableHelper;
 
@@ -35,6 +35,7 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
 //    RecyclerView CouponList;
     @BindView(R.id.commoditiesList_rv)
     RecyclerView CommoditiesList;
+//    优惠券
     StoreCouponAdapter mStoreCouponAdapter;
     TertiaryDetailsAdapter mTertiaryDetailsAdapter;
 
@@ -49,14 +50,14 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
     @Override
     protected void initListener() {
         initView();
-        CommoditiesList.addOnItemTouchListener(new OnItemClickListener() {
-            @Override
-            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(getActivity(),MerchandiseNewsActivity.class);
-                intent.putExtra("goodsid",getThirdGoogsDatas().get(position).getGId());
-                startActivity(intent);
-            }
-        });
+//        CommoditiesList.addOnItemTouchListener(new OnItemClickListener() {
+//            @Override
+//            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                Intent intent = new Intent(getActivity(),MerchandiseNewsActivity.class);
+//                intent.putExtra("goodsid",getThirdGoogsDatas().get(position).getGId());
+//                startActivity(intent);
+//            }
+//        });
 
     }
     protected void initView(){
@@ -64,7 +65,19 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
         CommoditiesList.setHasFixedSize(true);
         mTertiaryDetailsAdapter = new TertiaryDetailsAdapter(R.layout.item_home_popularity, null);
         CommoditiesList.setAdapter(mTertiaryDetailsAdapter);
-        CommoditiesList.addItemDecoration(new VerticalSpaceItemDecoration(20,1));
+        if(getShopPageCouponList() != null){
+            CommoditiesList.addItemDecoration(new VerticalSpaceItemDecoration(20,1));
+        }else {
+            CommoditiesList.addItemDecoration(new VerticalSpaceItemDecoration(20,2));
+        }
+        mTertiaryDetailsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getActivity(),MerchandiseNewsActivity.class);
+                intent.putExtra("goodsid",getThirdGoogsDatas().get(position).getGId());
+                startActivity(intent);
+            }
+        });
         mTertiaryDetailsAdapter.setHeaderView(getHeaderView());
     }
 
@@ -106,6 +119,12 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
         CouponList.setHasFixedSize(true);
         mStoreCouponAdapter = new StoreCouponAdapter(R.layout.item_coupons, null);
         CouponList.setAdapter(mStoreCouponAdapter);
+        mStoreCouponAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                T.showShort(getActivity(),"点击"+position);
+            }
+        });
         return view;
     }
 }

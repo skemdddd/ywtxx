@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/ll_customer_selector"
+        android:id="@+id/about_store_rl"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+    >
+        <ImageView
+            android:id="@+id/shoplogo_iv"
+            android:layout_width="66.5dp"
+            android:layout_height="66.5dp"
+            android:layout_marginLeft="11dp"
+            android:scaleType="fitXY" tools:src="@mipmap/sign_in_logo"
+            android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginStart="11dp"/>
+        <TextView
+            android:id="@+id/shopNname_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="21dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" tools:text="极品小茶屋子"
+            android:layout_marginStart="21dp" android:layout_above="@+id/imageButton3"
+            android:layout_toRightOf="@+id/shoplogo_iv" android:layout_toEndOf="@+id/shoplogo_iv"/>
+        <LinearLayout android:id="@+id/linearLayout3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_alignBottom="@+id/shoplogo_iv"
+                      android:layout_alignLeft="@+id/shopNname_iv"
+                      android:layout_alignStart="@+id/shopNname_iv">
+            <TextView
+                android:id="@+id/favoritesnum_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#9d9d9d"
+                android:textSize="13sp"
+                tools:text="收藏231"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  |  "
+                android:textColor="#9d9d9d"/>
+            <TextView
+                android:id="@+id/ordernum_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textColor="#9d9d9d"
+                android:textSize="13sp"
+                tools:text="销量231"/>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+            android:background="@color/transparency" android:src="@mipmap/personal_enter"/>
+    </RelativeLayout>
+</LinearLayout>

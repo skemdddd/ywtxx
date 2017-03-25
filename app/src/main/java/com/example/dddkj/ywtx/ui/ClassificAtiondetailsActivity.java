@@ -111,10 +111,12 @@ public class ClassificAtiondetailsActivity extends BaseActivity {
     }
 
     public void initView() {
+
         mPopularityList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         mPopularityList.setHasFixedSize(true);
         mClassificAtiondetailsAdapter = new ClassificAtiondetailsAdapter(R.layout.item_classification_deails, null);
         mPopularityList.setAdapter(mClassificAtiondetailsAdapter);
+
     }
 
 

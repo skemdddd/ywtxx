@@ -185,7 +185,6 @@ public class ClassifyFragment extends BaseFragment {
         List<MyClassifySection> list = new ArrayList<>();
         try {
             for (int i = 0; i < classifySkip.getData().size() ; i++) {
-                Logger.i("数量  "+ classifySkip.getData().size());
                 list.add(new MyClassifySection(true, classifySkip.getData().get(i).getCatsName()));
                 for (int k = 0; k < classifySkip.getData().get(i).getData().size(); k++) {
                     list.add(new MyClassifySection(classifySkip.getData().get(i).getData().get(k)));

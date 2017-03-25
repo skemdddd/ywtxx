@@ -95,6 +95,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initListener() {
         Logger.i("主页");
+
 //        人气商品
         mPopularityList.addOnItemTouchListener(new OnItemClickListener() {
             @Override

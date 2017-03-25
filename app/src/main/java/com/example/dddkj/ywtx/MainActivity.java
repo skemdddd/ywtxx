@@ -6,6 +6,7 @@ import android.widget.RadioGroup;
 
 import com.example.dddkj.ywtx.Base.BaseActivity;
 import com.example.dddkj.ywtx.Fragment.FragmentController;
+import com.example.dddkj.ywtx.MyApplication.MyApplication;
 
 import butterknife.BindView;
 
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         setContentView(R.layout.activity_main);
         controller = FragmentController.getInstance(this, R.id.hometab_context);
         controller.showFragment(0);
+        MyApplication.getInstance().setUserid("40");
 
     }
 

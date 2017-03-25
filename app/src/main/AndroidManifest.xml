@@ -1,12 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.dddkj.ywtx">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
 
 
     <application
         android:name=".MyApplication.MyApplication"
+
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -18,16 +20,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginAcivity">
+        <activity
+            android:label="登陆"
+            android:name=".ui.LoginAcivity">
 
         </activity>
-        <activity android:name=".ui.ClassificAtiondetailsActivity">
+        <activity
+
+            android:label="首页二级分类详情1"
+            android:name=".ui.ClassificAtiondetailsActivity">
 
         </activity>
-        <activity android:name=".ui.TertiaryDetailsActivity">
+        <activity
+            android:label="首页三级分类详情1"
+            android:name=".ui.TertiaryDetailsActivity">
 
         </activity>
-        <activity android:name=".ui.ClassifySortActivity">
+        <activity
+            android:name=".ui.ClassifySortActivity">
 
         </activity>
         <activity
@@ -70,6 +80,26 @@
             android:name=".ui.SearchGoodsListActivity">
 
         </activity>
+        <activity
+            android:label="地址管理"
+            android:name=".ui.DeliveryAddrssActivity">
+
+        </activity>
+        <activity
+            android:label="编辑收货地址"
+            android:name=".ui.EditShippingAddressActivity">
+
+        </activity>
+        <activity
+            android:label="地址增加"
+            android:name=".ui.AreaSelectActivity">
+
+        </activity>
+        <activity
+            android:label="我的收藏"
+            android:name=".ui.MyCollection">
+        </activity>
+
 
     </application>
 

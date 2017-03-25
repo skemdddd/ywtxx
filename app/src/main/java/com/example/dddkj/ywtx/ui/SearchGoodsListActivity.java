@@ -139,7 +139,6 @@ public class SearchGoodsListActivity  extends BaseActivity implements MySuspensi
                     @Override
                     public void onAfter(String s, Exception e) {
                         super.onAfter(s, e);
-                        Logger.i("shopid  "+ intent.getStringExtra("shopid"));
                         Logger.i("key   "+ intent.getStringExtra("key"));
                         mProgressActivityrv.showContent();
                         ThirdGoogs thirdGoogs = gson.fromJson(s, ThirdGoogs.class);
