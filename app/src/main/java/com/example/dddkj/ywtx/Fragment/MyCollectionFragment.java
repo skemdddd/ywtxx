@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.example.dddkj.ywtx.Adapter.ClassificAtiondetailsAdapter;
+import com.example.dddkj.ywtx.Adapter.CollectAdapter;
 import com.example.dddkj.ywtx.Adapter.FavoritesShopsAdapter;
 import com.example.dddkj.ywtx.Base.BaseFragment;
 import com.example.dddkj.ywtx.Entity.FavoritesShops;
@@ -30,13 +28,15 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
 import com.orhanobut.logger.Logger;
 
+import java.util.List;
+
 import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Response;
 
 /**
  * 项目名称：亿我同行
- * <p>
+ * <>
  * 创建时间：2017/3/23 14:44
  */
 
@@ -44,11 +44,37 @@ public class MyCollectionFragment extends BaseFragment {
     @BindView(R.id.FavoritesList)
     RecyclerView mFavoritesList;
     private static final String ARG_PARAM1 = "parentCode";
-    ClassificAtiondetailsAdapter mClassificAtiondetailsAdapter;
+
+    public CollectAdapter getCollectAdapter() {
+        return mCollectAdapter;
+    }
+
+    public void setCollectAdapter(CollectAdapter collectAdapter) {
+        mCollectAdapter = collectAdapter;
+    }
+
+    public FavoritesShopsAdapter getFavoritesShopsAdapter() {
+        return mFavoritesShopsAdapter;
+    }
+
+    public void setFavoritesShopsAdapter(FavoritesShopsAdapter favoritesShopsAdapter) {
+        mFavoritesShopsAdapter = favoritesShopsAdapter;
+    }
+
+    CollectAdapter mCollectAdapter;
+
+    public RecyclerView getFavoritesList() {
+        return mFavoritesList;
+    }
+
+    public void setFavoritesList(RecyclerView favoritesList) {
+        mFavoritesList = favoritesList;
+    }
+
     FavoritesShopsAdapter mFavoritesShopsAdapter;
     private String mParam1;
     @BindView(R.id.ProgressActivity)
-    ProgressActivity mProgressActivity;
+    public ProgressActivity mProgressActivity;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container) {
@@ -61,37 +87,59 @@ public class MyCollectionFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-
         if (mParam1.equals("goods")) {
             mFavoritesList.setLayoutManager(new LinearLayoutManager(getActivity()));
             mFavoritesList.setHasFixedSize(true);
-            mClassificAtiondetailsAdapter = new ClassificAtiondetailsAdapter(R.layout.item_classification_deails, null);
-            mFavoritesList.setAdapter(mClassificAtiondetailsAdapter);
-            mFavoritesList.addOnItemTouchListener(new OnItemClickListener() {
+            mCollectAdapter = new CollectAdapter(R.layout.item_collect, null);
+            mFavoritesList.setAdapter(mCollectAdapter);
+            mCollectAdapter.setOnItemListener(new CollectAdapter.OnItemClickListener() {
+
                 @Override
-                public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                public void setOnItemClick(int position, boolean isCheck, View view, List<SecondaryRecommendationData> data) {
                     Intent intent = new Intent(getActivity(), MerchandiseNewsActivity.class);
-                    SecondaryRecommendationData secondaryRecommendationData = (SecondaryRecommendationData)adapter.getData().get(position);
-                    intent.putExtra("goodsid",secondaryRecommendationData.getGId());
+                    SecondaryRecommendationData secondaryRecommendationData = data.get(position);
+                    intent.putExtra("goodsid", secondaryRecommendationData.getGId());
                     startActivity(intent);
                 }
+
+                @Override
+                public boolean setOnItemLongClick(int position) {
+                    return false;
+                }
+
+                @Override
+                public void setOnItemCheckedChanged(int position, boolean isCheck) {
+
+
+                }
             });
+
         } else {
             mFavoritesList.setLayoutManager(new LinearLayoutManager(getActivity()));
             mFavoritesList.setHasFixedSize(true);
             mFavoritesShopsAdapter = new FavoritesShopsAdapter(R.layout.item_shop_collect, null);
             mFavoritesList.setAdapter(mFavoritesShopsAdapter);
-            mFavoritesList.addOnItemTouchListener(new OnItemClickListener() {
+            mFavoritesShopsAdapter.setOnItemListener(new FavoritesShopsAdapter.OnItemClickListener() {
                 @Override
-                public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    FavoritesShopsData favoritesShopsData = (FavoritesShopsData) adapter.getData().get(position);
-                    Intent intentStore = new Intent(getActivity(),EnterStoreActivity.class);
-                    intentStore.putExtra("shopid",favoritesShopsData.getShopid());
+                public void setOnItemClick(int position, boolean isCheck, View view, List<FavoritesShopsData> data) {
+                    FavoritesShopsData favoritesShopsData = data.get(position);
+                    Intent intentStore = new Intent(getActivity(), EnterStoreActivity.class);
+                    intentStore.putExtra("shopid", favoritesShopsData.getShopid());
                     startActivity(intentStore);
                 }
-            });
 
+                @Override
+                public boolean setOnItemLongClick(int position) {
+                    return false;
+                }
+
+                @Override
+                public void setOnItemCheckedChanged(int position, boolean isCheck) {
+
+                }
+            });
         }
+
 
     }
 
@@ -113,6 +161,9 @@ public class MyCollectionFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        Submit(mParam1);
+    }
+    public void  Submit(String param1){
         final Gson gson = new Gson();
         if (mParam1.equals("goods")) {
             OkGo.post(RequesURL.FAVORITESLIST)
@@ -133,7 +184,16 @@ public class MyCollectionFragment extends BaseFragment {
                             super.onAfter(s, e);
                             Logger.json(s);
                             SecondaryRecommendation secondaryRecommendation = gson.fromJson(s, SecondaryRecommendation.class);
-                            mClassificAtiondetailsAdapter.setNewData(secondaryRecommendation.getData());
+                            mCollectAdapter.setNewData(secondaryRecommendation.getData());
+                            if(secondaryRecommendation.getData().size() == 0){
+                                mProgressActivity.showEmpty(getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                    }
+                                });
+                            }
+
 
                         }
 
@@ -163,6 +223,15 @@ public class MyCollectionFragment extends BaseFragment {
                             Logger.json(s);
                             final FavoritesShops favoritesShops = gson.fromJson(s, FavoritesShops.class);
                             mFavoritesShopsAdapter.setNewData(favoritesShops.getData());
+                            if(favoritesShops.getData().size() == 0 && mProgressActivity!=null ){
+                                mProgressActivity.showEmpty(getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容!", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                    }
+                                });
+                            }
+
                         }
 
                         @Override
@@ -172,9 +241,10 @@ public class MyCollectionFragment extends BaseFragment {
                     });
         }
     }
-
     @Override
     public View getScrollableView() {
         return null;
     }
+
+
 }

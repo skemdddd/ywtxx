@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+
           package="com.example.dddkj.ywtx">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -7,8 +9,8 @@
 
 
     <application
+        tools:replace="android:icon"
         android:name=".MyApplication.MyApplication"
-
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -99,6 +101,21 @@
             android:label="我的收藏"
             android:name=".ui.MyCollection">
         </activity>
+        <activity
+            android:label="个人中心"
+            android:name=".ui.PersonalSettingActivity">
+
+        </activity>
+        <activity
+            android:label="我的优惠券"
+            android:name=".ui.MyCoupons">
+
+        </activity>
+        <activity
+            android:label="优惠券历史"
+            android:name=".ui.CouponHistoryActivity">
+        </activity>
+
 
 
     </application>

@@ -6,64 +6,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" android:background="@color/colorPrimaryDark">
-        <TextView
-
-            android:gravity="center_vertical"
-            android:focusable="true"
-            android:textSize="13sp"
-            android:hint="搜索店内商品"
-            android:drawableLeft="@mipmap/seach_gray"
-            android:background="@drawable/edit_radius"
-            android:drawablePadding="10dp"
-            android:id="@+id/search"
-            android:layout_width="180dp"
-            android:layout_height="32dp"
-            android:textColor="@color/titleText"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-           />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" android:background="@color/colorPrimaryDark"
+        android:gravity="center" android:orientation="horizontal">
         <ImageView
             android:id="@+id/title_back"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="9dp"
-            android:layout_marginStart="9dp"
+            android:layout_weight="1"
             android:padding="13dp"
             android:src="@mipmap/signin_back"/>
-        <ImageView
-            android:id="@+id/iminage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="20dp"
-            android:padding="6dp"
-            android:src="@mipmap/more"/>
+        <TextView android:id="@+id/search"
+                  android:layout_width="match_parent"
+                  android:layout_height="32dp"
+                  android:layout_marginEnd="10dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_weight="0.4"
+                  android:background="@drawable/edit_radius"
+                  android:drawableLeft="@mipmap/seach_gray"
+                  android:drawablePadding="10dp"
+                  android:focusable="true"
+                  android:gravity="center_vertical"
+                  android:hint="搜索店内商品"
+                  android:textColor="@color/titleText"
+                  android:textSize="13sp"/>
         <ImageView
             android:id="@+id/seekimage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="30dp"
+            android:layout_weight="1"
             android:padding="8dp"
             android:src="@mipmap/classification"/>
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/iminage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:src="@mipmap/more"/>
+
+
+    </LinearLayout>
+
+
     <com.example.dddkj.ywtx.utils.ProgressActivity
         android:id="@+id/ProgressActivity"
         android:layout_width="match_parent"
@@ -119,9 +109,9 @@
                     android:layout_toRightOf="@+id/shopNname_iv" android:src="@mipmap/shop_enter"/>
                 <LinearLayout android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:layout_alignBottom="@+id/shoplogo_iv"
                               android:layout_alignLeft="@+id/shopNname_iv"
-                              android:layout_alignStart="@+id/shopNname_iv"
-                              android:layout_below="@+id/imageButton3">
+                              android:layout_alignStart="@+id/shopNname_iv">
                     <TextView
                         android:id="@+id/favoritesnum_tv"
                         android:layout_width="wrap_content"
@@ -144,14 +134,20 @@
                         android:textSize="13sp" tools:text="销量231"/>
 
                 </LinearLayout>
-                <ImageButton
-                    android:id="@+id/imageButton3"
+                <CheckBox
+                    android:id="@+id/iv_good_collection_select"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true" android:layout_alignTop="@+id/imageView8"
-                    android:layout_marginEnd="15dp" android:layout_marginRight="15dp"
-                    android:background="@color/transparency" android:src="@mipmap/shop_collection_unchecked"/>
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/imageView8"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/checkbox_collection_shop_select"
+
+
+                />
             </RelativeLayout>
 
 

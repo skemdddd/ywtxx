@@ -2,6 +2,8 @@ package com.example.dddkj.ywtx.common;
 
 import android.support.design.widget.TabLayout;
 
+import java.util.List;
+
 /**
  * 项目名称：亿我同行
  * <p>
@@ -9,6 +11,17 @@ import android.support.design.widget.TabLayout;
  */
 
 public class Constant {
+
+
+    public static List<String> getValues() {
+        return values;
+    }
+
+    public static void setValues(List<String> values) {
+        Constant.values = values;
+    }
+
+    public static List<String>values;
     public static String getShopid() {
         return shopid;
     }

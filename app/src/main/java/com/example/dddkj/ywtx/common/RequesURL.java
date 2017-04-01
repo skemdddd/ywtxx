@@ -59,5 +59,11 @@ public class RequesURL {
     public static final String ARDELETE = URL + INDEX + "m=Customer&c=UserAddress&a=arDelete";
     //    收藏列表
     public static final String FAVORITESLIST = URL + INDEX + "m=Customer&c=Favorites&a=favoritesList";
+    //    取消收藏
+    public static final String UNFAVORITE = URL + INDEX + "m=Customer&c=Favorites&a=favoritesDel";
+    //    优惠券
+    public static final String DISCOUNTCOUPON = URL + INDEX + "m=Customer&c=Coupon&a=couponList";
+    //    收藏优惠券
+    public static final String FAVORITESADD = URL + INDEX + "m=Customer&c=Favorites&a=favoritesAdd";
 
 }

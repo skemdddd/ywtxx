@@ -7,18 +7,31 @@
 
         android:layout_marginBottom="2dp"
         android:background="@drawable/ll_customer_selector"
-        android:id="@+id/about_store_rl"
+        android:id="@+id/discountCoupon_rlyt"
         android:layout_width="match_parent"
         android:layout_height="90dp"
     >
+        <CheckBox
+            android:clickable="false"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/edit_CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/address_press"
+            android:button="@null"/>
         <ImageView
             android:id="@+id/shoplogo_iv"
             android:layout_width="66.5dp"
             android:layout_height="66.5dp"
-            android:layout_marginLeft="11dp"
+            android:layout_marginLeft="7dp"
             android:scaleType="fitXY" tools:src="@mipmap/sign_in_logo"
-            android:layout_centerVertical="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_marginStart="11dp"/>
+            android:layout_marginStart="7dp" android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/edit_CheckBox"
+            android:layout_toEndOf="@+id/edit_CheckBox"/>
         <TextView
             android:id="@+id/shopNname_iv"
             android:layout_width="wrap_content"

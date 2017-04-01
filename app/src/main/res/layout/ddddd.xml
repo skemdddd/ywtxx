@@ -6,61 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <CheckBox
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:clickable="false"
+        android:textColor="#9f9f9f"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="收藏"
+        android:id="@+id/iv_good_collection_select"
+        android:background="@drawable/checkbox_collection_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:clickable="false"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/edit_CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" android:layout_alignParentTop="true"
-        android:background="@color/colorPrimaryDark">
-        <EditText
-            android:background="@drawable/edit_radius"
-            android:id="@+id/title_text"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/title_back"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_toLeftOf="@+id/seekimage"
-            android:layout_toStartOf="@+id/seekimage"
-            android:textColor="@color/titleText"
-            android:textSize="18sp"
-            tools:text="登录"/>
-        <ImageView
-            android:id="@+id/title_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="9dp" android:layout_marginStart="9dp"
-            android:padding="13dp" android:src="@mipmap/signin_back"/>
-        <ImageView
-            android:id="@+id/iminage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="20dp"
-            android:padding="6dp"
-            android:src="@mipmap/more"/>
-        <ImageView
-            android:id="@+id/seekimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="30dp"
-            android:padding="8dp"
-            android:src="@mipmap/classification"/>
-
-
-    </RelativeLayout>
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/address_press"
+        android:button="@null"/>
 
 
 </RelativeLayout>

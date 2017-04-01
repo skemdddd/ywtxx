@@ -145,6 +145,15 @@ public class DeliveryAddressAdapter extends BaseQuickAdapter<SelectedBean, BaseV
                     public void onBefore(BaseRequest request) {
                         super.onBefore(request);
                         T.showShort(mContext, "正在删除");
+
+                        deliveryAddrssActivity.getProgressActivity().showEmpty(mContext.getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容，赶快增加地址吧!", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(deliveryAddrssActivity, EditShippingAddressActivity.class);
+                                deliveryAddrssActivity.startActivityForResult(intent, 1);
+                            }
+                        });
+
                     }
 
                     @Override
@@ -155,6 +164,7 @@ public class DeliveryAddressAdapter extends BaseQuickAdapter<SelectedBean, BaseV
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         T.showShort(mContext, "删除成功");
+
                     }
                 });
     }

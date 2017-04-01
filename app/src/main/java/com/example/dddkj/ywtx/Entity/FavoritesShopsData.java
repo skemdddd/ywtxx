@@ -12,6 +12,16 @@ public class FavoritesShopsData {
     private String shoplogo;
     private String favoritesnum;
     private String ordernum;
+
+    public String getFid() {
+        return fid;
+    }
+
+    public void setFid(String fid) {
+        this.fid = fid;
+    }
+
+    private String fid;
     public void setShopid(String shopid) {
         this.shopid = shopid;
     }

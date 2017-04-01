@@ -45,6 +45,16 @@ public class GoogsNewsData {
 
     private String timeNum;
 
+    public String getIsFavorites() {
+        return isFavorites;
+    }
+
+    public void setIsFavorites(String isFavorites) {
+        this.isFavorites = isFavorites;
+    }
+
+    private String isFavorites;
+
     public void setGId(String gId){
         this.gId = gId;
     }

@@ -16,7 +16,6 @@
           android:id="@+id/newStores_tv"
           android:layout_width="match_parent"
           android:layout_height="wrap_content">
-
       </android.support.v7.widget.RecyclerView>
 
    </com.example.dddkj.ywtx.utils.ProgressActivity>

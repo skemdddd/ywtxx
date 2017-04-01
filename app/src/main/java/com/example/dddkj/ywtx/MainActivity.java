@@ -16,7 +16,7 @@ import butterknife.BindView;
  * 创建时间：2017/2/8 10:49
  */
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener{
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     @BindView(R.id.hometab_radio)
     RadioGroup mHomeTab;
@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void Request() {
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -59,7 +60,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        switch (i){
+        switch (i) {
             case R.id.homeTab_rdoBtn:
                 controller.showFragment(0);
                 break;
@@ -73,5 +74,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 controller.showFragment(3);
 
         }
+
     }
+
 }

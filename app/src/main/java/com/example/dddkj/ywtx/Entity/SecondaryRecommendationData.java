@@ -9,6 +9,16 @@ package com.example.dddkj.ywtx.Entity;
 public class SecondaryRecommendationData {
     private String gId;
 
+    public String getFid() {
+        return fid;
+    }
+
+    public void setFid(String fid) {
+        this.fid = fid;
+    }
+
+    private String fid;
+
     private String gName;
 
     private String price;

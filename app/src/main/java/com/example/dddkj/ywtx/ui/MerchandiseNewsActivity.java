@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.request.BaseRequest;
 import com.lzy.widget.VerticalSlide;
 import com.lzy.widget.vertical.VerticalScrollView;
+import com.orhanobut.logger.Logger;
 
 import org.apache.http.util.EncodingUtils;
 
@@ -43,6 +45,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.bingoogolapple.bgabanner.BGABanner;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -120,6 +123,10 @@ public class MerchandiseNewsActivity extends BaseActivity {
     ImageButton enterstore_ibtn;
     @BindView(R.id.allshop_ibtn)
     ImageButton allshop_ibtn;
+    @BindView(R.id.iv_good_collection_select)
+    CheckBox iv_good_collection_select;
+    boolean click;
+
 
 
 
@@ -187,6 +194,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
 
 
 
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -214,6 +222,9 @@ public class MerchandiseNewsActivity extends BaseActivity {
 
         mAllComments_tv.setOnClickListener(this);
         mBackTop.setOnClickListener(this);
+//        弹窗
+
+
 
 
     }
@@ -241,6 +252,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
         final Gson gson = new Gson();
         OkGo.post(RequesURL.GOODSDETAILS)
                 .tag(this)
+                .params("uid",MyApplication.getInstance().getUserid())
                 .params("goodsid", mIntent.getStringExtra("goodsid"))
                 .cacheKey("cacheKey")
                 .cacheMode(CacheMode.DEFAULT)
@@ -265,6 +277,9 @@ public class MerchandiseNewsActivity extends BaseActivity {
                         marketprice_tv.setText("￥" + googsNews.getData().getMarPrice());
                         sales_volume_tv.setText("销量 :   " + googsNews.getData().getOrderNum());
                         courier_tv.setText("快递 :   " + googsNews.getData().getPostAge());
+                        Logger.i("123"+googsNews.getData().getIsFavorites());
+                        click=googsNews.getData().getIsFavorites().equals("1")?true:false;
+                        iv_good_collection_select.setChecked(click);
 //                        店铺
                         shopname_tv.setText(googsNews.getData().getShopname());
                         goods_tv.setText(googsNews.getData().getGoodsNum());
@@ -281,6 +296,37 @@ public class MerchandiseNewsActivity extends BaseActivity {
                                         shoplogo_image.setImageBitmap(resource);
                                     }
                                 });
+//                        收藏
+                        iv_good_collection_select.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(!click){
+                                    new SweetAlertDialog(MerchandiseNewsActivity.this)
+                                            .setTitleText("收藏成功")
+                                            .show();
+                                    click=true;
+                                }else {
+                                    new SweetAlertDialog(MerchandiseNewsActivity.this)
+                                            .setTitleText("取消成功")
+                                            .show();
+                                    click=false;
+                                }
+                                OkGo.post(RequesURL.FAVORITESADD)
+                                        .tag(this)
+                                        .params("uid",MyApplication.getInstance().getUserid())
+                                        .params("id",mIntent.getStringExtra("goodsid"))
+                                        .params("type","goods")
+                                        .cacheKey("cacheKey")
+                                        .cacheMode(CacheMode.DEFAULT)
+                                        .execute(new StringCallback() {
+                                            @Override
+                                            public void onSuccess(String s, Call call, Response response) {
+                                                Logger.json(s);
+
+                                            }
+                                        });
+                            }
+                        });
 
                         enterstore_ibtn.setOnClickListener(new View.OnClickListener() {
                             @Override

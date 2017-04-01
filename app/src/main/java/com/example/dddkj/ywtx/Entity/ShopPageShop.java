@@ -13,6 +13,16 @@ public class ShopPageShop {
     private String shopbanner;
     private String favoritesnum;
     private String ordernum;
+
+    public String getIsFavorites() {
+        return isFavorites;
+    }
+
+    public void setIsFavorites(String isFavorites) {
+        this.isFavorites = isFavorites;
+    }
+
+    private String isFavorites;
     public void setShopid(String shopid) {
         this.shopid = shopid;
     }

@@ -4,13 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/commoditiesList_rv"
+        <com.example.dddkj.ywtx.utils.ProgressActivity
+            android:id="@+id/ProgressActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/commoditiesList_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.RecyclerView>
+
+        </com.example.dddkj.ywtx.utils.ProgressActivity>
+
 
 
 

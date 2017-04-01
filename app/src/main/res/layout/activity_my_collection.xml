@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -12,24 +12,21 @@
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="我的收藏"
-            android:textColor="@color/titleText"
-            android:textSize="18sp"
-            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+            android:textColor="@color/titleText" android:textSize="18sp"/>
         <ImageView
-            android:padding="13dp"
             android:id="@+id/title_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="9dp"
-            android:layout_marginStart="9dp"
-            android:src="@mipmap/signin_back" android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="9dp" android:layout_marginStart="9dp"
+            android:padding="13dp" android:src="@mipmap/signin_back"/>
         <TextView
-            android:textColor="@color/white"
-            android:text="编辑"
-            android:padding="6dp"
-            android:id="@+id/add_address_tv"
+            android:id="@+id/edit_collect_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -37,20 +34,66 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="20dp"
+            android:padding="6dp"
+            android:text="编辑"
+            android:textColor="@color/white"
         />
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout
-        android:background="@color/white"
         android:id="@+id/TabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
     </android.support.design.widget.TabLayout>
-    <FrameLayout
-        android:layout_marginTop="5dp"
-        android:id="@+id/hometab_context"
+        <FrameLayout
+            android:id="@+id/hometab_context"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1">
+        </FrameLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/edit_collect_ll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+    >
+        <CheckBox
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:id="@+id/pitchon_cb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:button="@null"
+            android:drawableLeft="@drawable/address_press"
+            android:drawablePadding="20dp"
+            android:paddingLeft="20dp"
+            android:text="全选"/>
+        <CheckBox
+            android:visibility="gone"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:id="@+id/pitchonshop_cb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:button="@null"
+            android:drawableLeft="@drawable/address_press"
+            android:drawablePadding="20dp"
+            android:paddingLeft="20dp"
+            android:text="全选"/>
+        <Button
+            android:id="@+id/dele_bten"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/moneyText"
+            android:text="删除"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
-    </FrameLayout>
+
 </LinearLayout>

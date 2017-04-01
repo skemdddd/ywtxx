@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -42,6 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -90,6 +92,9 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
     ShopSalesPromotionFragment mShopSalesPromotionFragment;
     PopupWindow popWindow;
     Intent intentAbout;
+    @BindView(R.id.iv_good_collection_select)
+    CheckBox iv_good_collection_select;
+    boolean click;
 
 
     public String getHotSearch() {
@@ -143,6 +148,7 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
         setPricelistTab(mTabLayout, EnterStoreActivity.this);
         mEnterStoreAdapter = new EnterStoreAdapter(this.getSupportFragmentManager(), list_fragment, list_title);
         mViewPager.setAdapter(mEnterStoreAdapter);
+        mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(this);
         mScrollableLayout.getHelper().setCurrentScrollableContainer(mShopPageFragment);
@@ -155,6 +161,7 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
         final Gson gson = new Gson();
         OkGo.post(RequesURL.SHOPFRONTPAGE)
                 .tag(this)
+                .params("uid",MyApplication.getInstance().getUserid())
                 .params("shopid", mIntent.getStringExtra("shopid"))
                 .cacheKey("cacheKey")
                 .cacheMode(CacheMode.DEFAULT)
@@ -195,6 +202,42 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
                         ordernum_tv.setText(shopPage.getData().getShops().getOrdernum());
                         mShopPageFragment.setShopPageCouponList(shopPage.getData().getCouponlist());
                         mShopPageFragment.setThirdGoogsDatas(shopPage.getData().getBest());
+                        Logger.i("123"+shopPage.getData().getShops().getIsFavorites());
+                        click =shopPage.getData().getShops().getIsFavorites().equals("1")?true:false;
+                        iv_good_collection_select.setChecked(click);
+
+//                        收藏
+                        iv_good_collection_select.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if(!click){
+                                    new SweetAlertDialog(EnterStoreActivity.this)
+                                            .setTitleText("收藏成功")
+                                            .show();
+                                    click=true;
+                                }else {
+                                    new SweetAlertDialog(EnterStoreActivity.this)
+                                            .setTitleText("取消成功")
+                                            .show();
+                                    click=false;
+                                }
+                                OkGo.post(RequesURL.FAVORITESADD)
+                                        .tag(this)
+                                        .params("uid",MyApplication.getInstance().getUserid())
+                                        .params("id",mIntent.getStringExtra("shopid"))
+                                        .params("type","shops")
+                                        .cacheKey("cacheKey")
+                                        .cacheMode(CacheMode.DEFAULT)
+                                        .execute(new StringCallback() {
+                                            @Override
+                                            public void onSuccess(String s, Call call, Response response) {
+                                                Logger.json(s);
+
+                                            }
+                                        });
+                            }
+                        });
+
 
 
                     }
@@ -252,9 +295,6 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
                 intentSearch.putExtra("shopid", mIntent.getStringExtra("shopid"));
                 startActivity(intentSearch);
                 break;
-
-
-
 
         }
     }

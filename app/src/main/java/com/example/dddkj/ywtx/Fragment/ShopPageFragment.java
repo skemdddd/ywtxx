@@ -67,6 +67,7 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
         CommoditiesList.setAdapter(mTertiaryDetailsAdapter);
         if(getShopPageCouponList() != null){
             CommoditiesList.addItemDecoration(new VerticalSpaceItemDecoration(20,1));
+            mTertiaryDetailsAdapter.setHeaderView(getHeaderView());
         }else {
             CommoditiesList.addItemDecoration(new VerticalSpaceItemDecoration(20,2));
         }
@@ -78,12 +79,15 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
                 startActivity(intent);
             }
         });
-        mTertiaryDetailsAdapter.setHeaderView(getHeaderView());
+
     }
 
     @Override
     protected void initData() {
-        mStoreCouponAdapter.setNewData(getShopPageCouponList());
+        if(getShopPageCouponList()!=null){
+            mStoreCouponAdapter.setNewData(getShopPageCouponList());
+        }
+
         mTertiaryDetailsAdapter.setNewData(getThirdGoogsDatas());
     }
     public List<ShopPageCouponList> getShopPageCouponList() {

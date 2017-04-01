@@ -34,12 +34,12 @@
 
     </com.example.dddkj.ywtx.utils.ProgressActivity>
     <LinearLayout
-        android:layout_alignParentBottom="true"
         android:id="@+id/ll_good_detail_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <View
             android:layout_gravity="bottom"
             android:background="#b3b3b3"
@@ -79,13 +79,21 @@
                         android:src="@mipmap/details_enter_shop"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    <ImageView
+                    <RelativeLayout
                         android:layout_weight="1"
-                        android:id="@+id/iv_good_detai_collect_select123"
-                        android:src="@mipmap/details_collection"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent">
+                        <CheckBox
+                            android:button="@null"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/checkbox_collection_select"
+                            android:id="@+id/iv_good_collection_select"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"/>
 
+                    </RelativeLayout>
 
                 </LinearLayout>
 

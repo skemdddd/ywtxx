@@ -11,6 +11,8 @@ import com.example.dddkj.ywtx.Base.BaseFragment;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.ui.DeliveryAddrssActivity;
 import com.example.dddkj.ywtx.ui.MyCollection;
+import com.example.dddkj.ywtx.ui.MyCoupons;
+import com.example.dddkj.ywtx.ui.PersonalSettingActivity;
 
 import butterknife.BindView;
 
@@ -58,6 +60,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
 //    收获地址
     @BindView(R.id.personal_address_rl)
     RelativeLayout personal_address_rl;
+    @BindView(R.id.personal_setting_rl)
+    RelativeLayout personal_setting_rl;
+
 
 
     @Override
@@ -69,6 +74,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
     protected void initListener() {
         personal_address_rl.setOnClickListener(this);
         mCollect.setOnClickListener(this);
+        personal_setting_rl.setOnClickListener(this);
+        mDiscountCoupon.setOnClickListener(this);
     }
 
     @Override
@@ -87,9 +94,18 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
                 Intent intent1 = new Intent(getActivity(), MyCollection.class);
                 getActivity().startActivity(intent1);
                 break;
-
+            case R.id.personal_setting_rl:
+                Intent intent2 = new Intent(getActivity(), PersonalSettingActivity.class);
+                getActivity().startActivity(intent2);
+                break;
+            case R.id.discountCoupon_rlyt:
+                Intent intent3 =new Intent(getActivity(), MyCoupons.class);
+                getActivity().startActivityForResult(intent3,0);
+                break;
         }
     }
+
+
 
     @Override
     public View getScrollableView() {

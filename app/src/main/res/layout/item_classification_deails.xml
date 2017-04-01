@@ -12,6 +12,7 @@
         android:layout_weight="1"
         android:background="@drawable/ll_customer_selector"
     >
+
         <ImageView
             android:id="@+id/picture_img"
             android:scaleType="fitXY"
