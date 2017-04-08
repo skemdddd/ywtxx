@@ -6,13 +6,17 @@ import android.graphics.Bitmap;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -22,10 +26,13 @@ import com.example.dddkj.ywtx.Adapter.HomeBGABannerAdapter;
 import com.example.dddkj.ywtx.Adapter.MerchandiseCommentAdapter;
 import com.example.dddkj.ywtx.Base.BaseActivity;
 import com.example.dddkj.ywtx.Entity.GoogsNews;
+import com.example.dddkj.ywtx.Entity.ShopPageCouponList;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
+import com.example.dddkj.ywtx.Widget.CouponsPopWin;
 import com.example.dddkj.ywtx.Widget.Titlebar;
 import com.example.dddkj.ywtx.common.RequesURL;
+import com.example.dddkj.ywtx.utils.LoginState;
 import com.example.dddkj.ywtx.utils.ProgressActivity;
 import com.example.dddkj.ywtx.utils.RecycleViewDivider;
 import com.google.gson.Gson;
@@ -125,9 +132,11 @@ public class MerchandiseNewsActivity extends BaseActivity {
     ImageButton allshop_ibtn;
     @BindView(R.id.iv_good_collection_select)
     CheckBox iv_good_collection_select;
+    @BindView(R.id.coupons_rlyt)
+    RelativeLayout coupons_rlyt;
+    WindowManager.LayoutParams params;
+
     boolean click;
-
-
 
 
     @Override
@@ -145,6 +154,7 @@ public class MerchandiseNewsActivity extends BaseActivity {
             postData = "goodsid=" + mIntent.getStringExtra("goodsid");
             mWebView.postUrl(RequesURL.GOODSDETAILSWEB, EncodingUtils.getBytes(postData, "base64"));
         }
+
         mVerticalSlide.setOnShowNextPageListener(new VerticalSlide.OnShowNextPageListener() {
             @Override
             public void onShowNextPage() {
@@ -192,9 +202,6 @@ public class MerchandiseNewsActivity extends BaseActivity {
         });
 
 
-
-
-
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -222,9 +229,6 @@ public class MerchandiseNewsActivity extends BaseActivity {
 
         mAllComments_tv.setOnClickListener(this);
         mBackTop.setOnClickListener(this);
-//        弹窗
-
-
 
 
     }
@@ -250,9 +254,10 @@ public class MerchandiseNewsActivity extends BaseActivity {
     @Override
     protected void Request() {
         final Gson gson = new Gson();
+        Logger.i("name" + MyApplication.getInstance().getUserid());
         OkGo.post(RequesURL.GOODSDETAILS)
                 .tag(this)
-                .params("uid",MyApplication.getInstance().getUserid())
+                .params("uid", MyApplication.getInstance().getUserid())
                 .params("goodsid", mIntent.getStringExtra("goodsid"))
                 .cacheKey("cacheKey")
                 .cacheMode(CacheMode.DEFAULT)
@@ -266,20 +271,29 @@ public class MerchandiseNewsActivity extends BaseActivity {
                     @Override
                     public void onAfter(String s, Exception e) {
                         super.onAfter(s, e);
+                        Logger.json(s);
                         mProgressActivity.showContent();
 
-
-                        final GoogsNews googsNews = gson.fromJson(s,GoogsNews.class);
+                        final GoogsNews googsNews = gson.fromJson(s, GoogsNews.class);
 //                        轮播图
+                        Logger.json(s);
                         setBGABanner(googsNews.getData().getString());
                         TradeName.setText(googsNews.getData().getGName());
                         amount.setText(googsNews.getData().getPrice());
                         marketprice_tv.setText("￥" + googsNews.getData().getMarPrice());
                         sales_volume_tv.setText("销量 :   " + googsNews.getData().getOrderNum());
                         courier_tv.setText("快递 :   " + googsNews.getData().getPostAge());
-                        Logger.i("123"+googsNews.getData().getIsFavorites());
-                        click=googsNews.getData().getIsFavorites().equals("1")?true:false;
+
+
+                        click = googsNews.getData().getIsFavorites().equals("1") ? true : false;
                         iv_good_collection_select.setChecked(click);
+                        //        优惠券
+                        coupons_rlyt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                showPopFormBottom(getRootView(MerchandiseNewsActivity.this),googsNews.getData().getShopPageCouponLists());
+                            }
+                        });
 //                        店铺
                         shopname_tv.setText(googsNews.getData().getShopname());
                         goods_tv.setText(googsNews.getData().getGoodsNum());
@@ -300,47 +314,54 @@ public class MerchandiseNewsActivity extends BaseActivity {
                         iv_good_collection_select.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                if(!click){
-                                    new SweetAlertDialog(MerchandiseNewsActivity.this)
-                                            .setTitleText("收藏成功")
-                                            .show();
-                                    click=true;
-                                }else {
-                                    new SweetAlertDialog(MerchandiseNewsActivity.this)
-                                            .setTitleText("取消成功")
-                                            .show();
-                                    click=false;
-                                }
-                                OkGo.post(RequesURL.FAVORITESADD)
-                                        .tag(this)
-                                        .params("uid",MyApplication.getInstance().getUserid())
-                                        .params("id",mIntent.getStringExtra("goodsid"))
-                                        .params("type","goods")
-                                        .cacheKey("cacheKey")
-                                        .cacheMode(CacheMode.DEFAULT)
-                                        .execute(new StringCallback() {
-                                            @Override
-                                            public void onSuccess(String s, Call call, Response response) {
-                                                Logger.json(s);
+                                if(LoginState.LoginState()){
+                                    iv_good_collection_select.setChecked(false);
+                                    Intent intent = new Intent(MerchandiseNewsActivity.this,LoginAcivity.class);
+                                    startActivity(intent);
+                                }else{
+                                    if (!click) {
+                                        new SweetAlertDialog(MerchandiseNewsActivity.this)
+                                                .setTitleText("收藏成功")
+                                                .show();
+                                        click = true;
+                                    } else {
+                                        new SweetAlertDialog(MerchandiseNewsActivity.this)
+                                                .setTitleText("取消成功")
+                                                .show();
+                                        click = false;
+                                    }
+                                    OkGo.post(RequesURL.FAVORITESADD)
+                                            .tag(this)
+                                            .params("uid", MyApplication.getInstance().getUserid())
+                                            .params("id", mIntent.getStringExtra("goodsid"))
+                                            .params("type", "goods")
+                                            .cacheKey("cacheKey")
+                                            .cacheMode(CacheMode.DEFAULT)
+                                            .execute(new StringCallback() {
+                                                @Override
+                                                public void onSuccess(String s, Call call, Response response) {
+                                                    Logger.json(s);
 
-                                            }
-                                        });
+                                                }
+                                            });
+                                }
+
                             }
                         });
 
                         enterstore_ibtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intentStore = new Intent(MerchandiseNewsActivity.this,EnterStoreActivity.class);
-                                intentStore.putExtra("shopid",googsNews.getData().getSId());
+                                Intent intentStore = new Intent(MerchandiseNewsActivity.this, EnterStoreActivity.class);
+                                intentStore.putExtra("shopid", googsNews.getData().getSId());
                                 startActivity(intentStore);
                             }
                         });
                         iv_good_detai_collect_select.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intentStore = new Intent(MerchandiseNewsActivity.this,EnterStoreActivity.class);
-                                intentStore.putExtra("shopid",googsNews.getData().getSId());
+                                Intent intentStore = new Intent(MerchandiseNewsActivity.this, EnterStoreActivity.class);
+                                intentStore.putExtra("shopid", googsNews.getData().getSId());
                                 startActivity(intentStore);
                             }
                         });
@@ -348,10 +369,10 @@ public class MerchandiseNewsActivity extends BaseActivity {
                         allshop_ibtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intentStore = new Intent(MerchandiseNewsActivity.this,AllShopActivity.class);
-                                intentStore.putExtra("shopid",googsNews.getData().getSId());
-                                intentStore.putExtra("catsid","");
-                                intentStore.putExtra("title","全部商品");
+                                Intent intentStore = new Intent(MerchandiseNewsActivity.this, AllShopActivity.class);
+                                intentStore.putExtra("shopid", googsNews.getData().getSId());
+                                intentStore.putExtra("catsid", "");
+                                intentStore.putExtra("title", "全部商品");
                                 startActivity(intentStore);
                             }
                         });
@@ -364,10 +385,8 @@ public class MerchandiseNewsActivity extends BaseActivity {
 
                     }
 
-
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-
 
 
                     }
@@ -396,9 +415,6 @@ public class MerchandiseNewsActivity extends BaseActivity {
                     }
                 });
                 break;
-
-
-
         }
     }
 
@@ -418,5 +434,23 @@ public class MerchandiseNewsActivity extends BaseActivity {
         mBGABanner.setData(bannerImage, bannerTitle);
     }
 
+    public void showPopFormBottom(View view, List<ShopPageCouponList> shopPageCouponList) {
+        CouponsPopWin couponsPopWin = new CouponsPopWin(this,shopPageCouponList);
+//        设置Popupwindow显示位置（从底部弹出）
+        couponsPopWin.showAtLocation(findViewById(R.id.bottom), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        params = getWindow().getAttributes();
+        //当弹出Popupwindow时，背景变半透明
+        params.alpha = 0.7f;
+        getWindow().setAttributes(params);
+        //设置Popupwindow关闭监听，当Popupwindow关闭，背景恢复1f
+        couponsPopWin.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                params = getWindow().getAttributes();
+                params.alpha = 1f;
+                getWindow().setAttributes(params);
+            }
+        });
+    }
 
 }

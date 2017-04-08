@@ -1,5 +1,7 @@
 package com.example.dddkj.ywtx.Entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -30,6 +32,16 @@ public class GoogsNewsData {
     private GoodsAppraisesNum goodsAppraisesNum;
 
     private List<GoogsNewspicList> appraisesList ;
+
+    public List<ShopPageCouponList> getShopPageCouponLists() {
+        return shopPageCouponLists;
+    }
+
+    public void setShopPageCouponLists(List<ShopPageCouponList> shopPageCouponLists) {
+        this.shopPageCouponLists = shopPageCouponLists;
+    }
+    @SerializedName("couponList")
+    private List<ShopPageCouponList> shopPageCouponLists;
 
     private String sid;
 

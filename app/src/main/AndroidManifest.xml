@@ -1,41 +1,68 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-
           package="com.example.dddkj.ywtx">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <!--<uses-permission android:name="android.permission.INTERNET"/>-->
+    <!--<uses-permission android:name="android.permission.CALL_PHONE"/>-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
+    <!--<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>-->
+    <!--<uses-permission android:name="android.permission.CAMERA"/>-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS"/>-->
+    <!--<uses-permission android:name="android.permission.READ_CONTACTS" />-->
+    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+
+    <!-- 外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 许可振动 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 打开闪光灯 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <!-- 许可使用照相机 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 许可调用相机硬件 -->
+    <uses-feature android:name="android.hardware.camera"/>
+    <!-- 许可调用相机自动对焦 -->
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
 
 
     <application
-        tools:replace="android:icon"
+
         android:name=".MyApplication.MyApplication"
         android:allowBackup="true"
+        android:exported="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:label="登陆"
-            android:name=".ui.LoginAcivity">
+            android:name=".ui.LoginAcivity"
+            android:label="登陆">
 
         </activity>
         <activity
 
-            android:label="首页二级分类详情1"
-            android:name=".ui.ClassificAtiondetailsActivity">
+            android:name=".ui.ClassificAtiondetailsActivity"
+            android:label="首页二级分类详情1">
 
         </activity>
         <activity
-            android:label="首页三级分类详情1"
-            android:name=".ui.TertiaryDetailsActivity">
+            android:name=".ui.TertiaryDetailsActivity"
+            android:label="首页三级分类详情1">
 
         </activity>
         <activity
@@ -43,79 +70,83 @@
 
         </activity>
         <activity
-            android:label="商品详情"
-            android:name=".ui.MerchandiseNewsActivity">
+            android:name=".ui.MerchandiseNewsActivity"
+            android:label="商品详情">
 
         </activity>
 
         <activity
-            android:label="全部评论"
-            android:name=".ui.AllCommentsActivity">
+            android:name=".ui.AllCommentsActivity"
+            android:label="全部评论">
 
         </activity>
         <activity
-            android:label="进入店铺"
-            android:name=".ui.EnterStoreActivity">
+            android:name=".ui.EnterStoreActivity"
+            android:label="进入店铺">
 
         </activity>
         <activity
-            android:label="店铺介绍"
-            android:name=".ui.AboutStoreActivity">
+            android:name=".ui.AboutStoreActivity"
+            android:label="店铺介绍">
 
         </activity>
         <activity
-            android:label="全部商品"
-            android:name=".ui.AllShopActivity">
+            android:name=".ui.AllShopActivity"
+            android:label="全部商品">
         </activity>
         <activity
-            android:label="店铺全部商品"
-           android:name=".ui.ShopAllGoodsActivity">
+            android:name=".ui.ShopAllGoodsActivity"
+            android:label="店铺全部商品">
 
         </activity>
         <activity
-            android:label="店铺搜索"
-            android:name=".ui.SearchGoodsActivity">
+            android:name=".ui.SearchGoodsActivity"
+            android:label="店铺搜索">
 
         </activity>
         <activity
-            android:label="店铺搜索列表"
-            android:name=".ui.SearchGoodsListActivity">
+            android:name=".ui.SearchGoodsListActivity"
+            android:label="店铺搜索列表">
 
         </activity>
         <activity
-            android:label="地址管理"
-            android:name=".ui.DeliveryAddrssActivity">
+            android:name=".ui.DeliveryAddrssActivity"
+            android:label="地址管理">
 
         </activity>
         <activity
-            android:label="编辑收货地址"
-            android:name=".ui.EditShippingAddressActivity">
+            android:name=".ui.EditShippingAddressActivity"
+            android:label="编辑收货地址">
 
         </activity>
         <activity
-            android:label="地址增加"
-            android:name=".ui.AreaSelectActivity">
+            android:name=".ui.AreaSelectActivity"
+            android:label="地址增加">
 
         </activity>
         <activity
-            android:label="我的收藏"
-            android:name=".ui.MyCollection">
+            android:name=".ui.MyCollection"
+            android:label="我的收藏">
         </activity>
         <activity
-            android:label="个人中心"
-            android:name=".ui.PersonalSettingActivity">
+            android:name=".ui.PersonalSettingActivity"
+            android:label="个人中心">
 
         </activity>
         <activity
-            android:label="我的优惠券"
-            android:name=".ui.MyCoupons">
+            android:name=".ui.MyCoupons"
+            android:label="我的优惠券">
 
         </activity>
         <activity
-            android:label="优惠券历史"
-            android:name=".ui.CouponHistoryActivity">
+            android:name=".ui.CouponHistoryActivity"
+            android:label="优惠券历史">
         </activity>
-
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:label="裁剪"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
 
     </application>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="10dp"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/coupon"/>
+        <TextView
+            android:id="@+id/CouponAmount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:textSize="30sp" tools:text="15.00"/>
+        <TextView
+            android:id="@+id/jprice_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CouponAmount_tv"
+            android:layout_alignStart="@+id/CouponAmount_tv"
+            android:layout_below="@+id/CouponAmount_tv"
+            android:layout_margin="5dp"
+            android:textColor="@color/white"
+            android:textSize="15sp" tools:text="使用条件"/>
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CouponAmount_tv"
+            android:layout_alignStart="@+id/CouponAmount_tv"
+            android:layout_below="@+id/jprice_tv"
+            android:layout_margin="5dp" android:textColor="@color/white"
+            android:textSize="10sp" tools:text="使用时间"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -101,6 +101,14 @@ public class CouponListFragment extends BaseFragment {
                         mProgressActivity.showContent();
                         CouponList couponList = gson.fromJson(s, CouponList.class);
                         mCouponAdapter.setNewData(couponList.getData());
+                        if (couponList.getData().size() == 0) {
+                            mProgressActivity.showEmpty(getResources().getDrawable(R.mipmap.ic_empty_page), "", "咦...没有任何内容，赶快领取吧", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    MyApplication.getInstance().finishActivity(getActivity());
+                                }
+                            });
+                        }
                     }
 
                     @Override

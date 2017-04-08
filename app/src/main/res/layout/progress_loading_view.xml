@@ -1,31 +1,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:id="@+id/loadingStateRelativeLayout"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/loadingStateRelativeLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
     <ProgressBar
         android:id="@+id/progressbar"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"
+        android:indeterminateBehavior="repeat"
         android:indeterminateDrawable="@drawable/progressstyleshape"
         android:indeterminateDuration="1200"
-        android:indeterminateBehavior="repeat"
     />
 
     <TextView
-        android:text="加载中..."
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/progressbar"
-        android:textSize="16sp"
-        android:textColor="#333333"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="加载中..."
+        android:textColor="#333333"
+        android:textSize="16sp"/>
 
 
 </RelativeLayout>

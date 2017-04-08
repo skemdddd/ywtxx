@@ -96,7 +96,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener{
                 break;
             case R.id.personal_setting_rl:
                 Intent intent2 = new Intent(getActivity(), PersonalSettingActivity.class);
-                getActivity().startActivity(intent2);
+                getActivity().startActivityForResult(intent2,1);
                 break;
             case R.id.discountCoupon_rlyt:
                 Intent intent3 =new Intent(getActivity(), MyCoupons.class);

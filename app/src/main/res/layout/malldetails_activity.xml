@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <include
-
                 layout="@layout/merchandisenews_fragment">
             </include>
             <include
@@ -48,6 +47,7 @@
 
         </View>
         <LinearLayout
+            android:id="@+id/bottom"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

@@ -57,6 +57,19 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true" android:layout_marginEnd="14dp"
             android:layout_marginRight="14dp" android:src="@mipmap/personal_enter"/>
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/shape_circle_blue"
+            android:padding="3dp"
+            android:src="@mipmap/personal_head_portrait"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageView5"
+            android:layout_toStartOf="@+id/imageView5"
+            android:layout_marginEnd="7dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_marginTop="11dp"
@@ -162,6 +175,23 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true" android:layout_marginEnd="14dp"
             android:layout_marginRight="14dp" android:src="@mipmap/personal_enter"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:id="@+id/back_rl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:clickable="true"
+    >
+
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" android:text="退出"/>
     </RelativeLayout>
 
 

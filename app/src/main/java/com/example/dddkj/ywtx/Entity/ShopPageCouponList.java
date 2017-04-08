@@ -7,13 +7,23 @@ package com.example.dddkj.ywtx.Entity;
  */
 
 public class ShopPageCouponList {
+    public String getSytime() {
+        return sytime;
+    }
 
+    public void setSytime(String sytime) {
+        this.sytime = sytime;
+    }
+
+    private String sytime;
     private String couid;
     private String mprice;
     private String jprice;
+
     public void setCouid(String couid) {
         this.couid = couid;
     }
+
     public String getCouid() {
         return couid;
     }
@@ -21,6 +31,7 @@ public class ShopPageCouponList {
     public void setMprice(String mprice) {
         this.mprice = mprice;
     }
+
     public String getMprice() {
         return mprice;
     }
@@ -28,6 +39,7 @@ public class ShopPageCouponList {
     public void setJprice(String jprice) {
         this.jprice = jprice;
     }
+
     public String getJprice() {
         return jprice;
     }

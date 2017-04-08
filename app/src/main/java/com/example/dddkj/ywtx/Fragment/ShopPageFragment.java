@@ -11,18 +11,29 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.dddkj.ywtx.Adapter.StoreCouponAdapter;
 import com.example.dddkj.ywtx.Adapter.TertiaryDetailsAdapter;
 import com.example.dddkj.ywtx.Base.BaseFragment;
+import com.example.dddkj.ywtx.Entity.CouponInsert;
 import com.example.dddkj.ywtx.Entity.ShopPageCouponList;
 import com.example.dddkj.ywtx.Entity.ThirdGoogsData;
 import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
+import com.example.dddkj.ywtx.common.RequesURL;
+import com.example.dddkj.ywtx.ui.LoginAcivity;
 import com.example.dddkj.ywtx.ui.MerchandiseNewsActivity;
+import com.example.dddkj.ywtx.utils.LoginState;
 import com.example.dddkj.ywtx.utils.T;
 import com.example.dddkj.ywtx.utils.VerticalSpaceItemDecoration;
+import com.google.gson.Gson;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.StringCallback;
+import com.orhanobut.logger.Logger;
 import com.scrollablelayout.ScrollableHelper;
 
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * 项目名称：亿我同行
@@ -126,7 +137,28 @@ public class ShopPageFragment extends BaseFragment  implements ScrollableHelper.
         mStoreCouponAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                T.showShort(getActivity(),"点击"+position);
+                ShopPageCouponList shopPageCouponList1 = (ShopPageCouponList) adapter.getData().get(position);
+
+                if (LoginState.LoginState()) {
+                    Intent intent = new Intent(getActivity(), LoginAcivity.class);
+                    getActivity().startActivity(intent);
+                } else {
+                    final Gson gson = new Gson();
+                    OkGo.post(RequesURL.COUPONINSERT)
+                            .tag(this)
+                            .params("uid", MyApplication.getInstance().getUserid())
+                            .params("couponId", shopPageCouponList1.getCouid())
+                            .cacheKey("cacheKey")
+                            .cacheMode(CacheMode.DEFAULT)
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onSuccess(String s, Call call, Response response) {
+                                    Logger.json(s);
+                                    CouponInsert couponInsert =gson.fromJson(s,CouponInsert.class);
+                                    T.showShort(getActivity(),couponInsert.getMessage());
+                                }
+                            });
+                }
             }
         });
         return view;

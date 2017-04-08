@@ -30,6 +30,7 @@ import com.example.dddkj.ywtx.MyApplication.MyApplication;
 import com.example.dddkj.ywtx.R;
 import com.example.dddkj.ywtx.common.Constant;
 import com.example.dddkj.ywtx.common.RequesURL;
+import com.example.dddkj.ywtx.utils.LoginState;
 import com.example.dddkj.ywtx.utils.ProgressActivity;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -108,7 +109,6 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
     protected String mHotSearch;
 
 
-
     @Override
     protected void loadViewLayout() {
         setContentView(R.layout.activity_enter_store);
@@ -125,6 +125,7 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
         iminage.setOnClickListener(this);
         search.setOnClickListener(this);
     }
+
     public void initView() {
 
 //        初始化Fragment
@@ -202,42 +203,47 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
                         ordernum_tv.setText(shopPage.getData().getShops().getOrdernum());
                         mShopPageFragment.setShopPageCouponList(shopPage.getData().getCouponlist());
                         mShopPageFragment.setThirdGoogsDatas(shopPage.getData().getBest());
-                        Logger.i("123"+shopPage.getData().getShops().getIsFavorites());
-                        click =shopPage.getData().getShops().getIsFavorites().equals("1")?true:false;
+                        Logger.i("123" + shopPage.getData().getShops().getIsFavorites());
+                        click = shopPage.getData().getShops().getIsFavorites().equals("1") ? true : false;
                         iv_good_collection_select.setChecked(click);
 
 //                        收藏
                         iv_good_collection_select.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                if(!click){
-                                    new SweetAlertDialog(EnterStoreActivity.this)
-                                            .setTitleText("收藏成功")
-                                            .show();
-                                    click=true;
-                                }else {
-                                    new SweetAlertDialog(EnterStoreActivity.this)
-                                            .setTitleText("取消成功")
-                                            .show();
-                                    click=false;
-                                }
-                                OkGo.post(RequesURL.FAVORITESADD)
-                                        .tag(this)
-                                        .params("uid",MyApplication.getInstance().getUserid())
-                                        .params("id",mIntent.getStringExtra("shopid"))
-                                        .params("type","shops")
-                                        .cacheKey("cacheKey")
-                                        .cacheMode(CacheMode.DEFAULT)
-                                        .execute(new StringCallback() {
-                                            @Override
-                                            public void onSuccess(String s, Call call, Response response) {
-                                                Logger.json(s);
+                                if (LoginState.LoginState()) {
+                                    iv_good_collection_select.setChecked(false);
+                                    Intent intent = new Intent(EnterStoreActivity.this, LoginAcivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    if (!click) {
+                                        new SweetAlertDialog(EnterStoreActivity.this)
+                                                .setTitleText("收藏成功")
+                                                .show();
+                                        click = true;
+                                    } else {
+                                        new SweetAlertDialog(EnterStoreActivity.this)
+                                                .setTitleText("取消成功")
+                                                .show();
+                                        click = false;
+                                    }
+                                    OkGo.post(RequesURL.FAVORITESADD)
+                                            .tag(this)
+                                            .params("uid",MyApplication.getInstance().getUserid())
+                                            .params("id", mIntent.getStringExtra("shopid"))
+                                            .params("type", "shops")
+                                            .cacheKey("cacheKey")
+                                            .cacheMode(CacheMode.DEFAULT)
+                                            .execute(new StringCallback() {
+                                                @Override
+                                                public void onSuccess(String s, Call call, Response response) {
+                                                    Logger.json(s);
 
-                                            }
-                                        });
+                                                }
+                                            });
+                                }
                             }
                         });
-
 
 
                     }
@@ -291,7 +297,7 @@ public class EnterStoreActivity extends BaseActivity implements ViewPager.OnPage
                 startActivity(intentAll);
                 break;
             case R.id.search:
-                Intent intentSearch =new Intent(this,SearchGoodsActivity.class);
+                Intent intentSearch = new Intent(this, SearchGoodsActivity.class);
                 intentSearch.putExtra("shopid", mIntent.getStringExtra("shopid"));
                 startActivity(intentSearch);
                 break;

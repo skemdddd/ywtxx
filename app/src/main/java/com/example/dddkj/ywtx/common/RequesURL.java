@@ -65,5 +65,10 @@ public class RequesURL {
     public static final String DISCOUNTCOUPON = URL + INDEX + "m=Customer&c=Coupon&a=couponList";
     //    收藏优惠券
     public static final String FAVORITESADD = URL + INDEX + "m=Customer&c=Favorites&a=favoritesAdd";
-
+    //    验证码
+    public static final String CODEFIND = URL + INDEX + "m=Customer&c=Code&a=codeFind";
+    //    注册登陆
+    public static final String REGISTER = URL + INDEX + "m=Customer&c=Users&a=register";
+    //    领取优惠券
+    public static final String COUPONINSERT = URL + INDEX + "m=Customer&c=Coupon&a=couponInsert";
 }

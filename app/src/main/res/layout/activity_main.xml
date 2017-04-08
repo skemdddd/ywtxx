@@ -44,6 +44,7 @@
                 style="@style/RadioButtonBottomTab"
                 android:drawableTop="@drawable/tab_img_shop_press"
                 android:text="购物车" />
+
             <RadioButton
                 android:id="@+id/myTab_rdoBtn"
                 style="@style/RadioButtonBottomTab"
